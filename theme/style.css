@@ -17,6 +17,9 @@
     display: none;
 }
 
+.text_cell {
+    font-size: 16px;
+}
 /* Format summary rows */
 .dataframe-summary-row tr:last-child,
 .dataframe-summary-col td:last-child{
