@@ -18,7 +18,7 @@
 }
 
 .text_cell {
-    font-size: 16px;
+    font-size: 18px;
 }
 /* Format summary rows */
 .dataframe-summary-row tr:last-child,
