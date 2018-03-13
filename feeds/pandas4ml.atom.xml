@@ -993,10 +993,11 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[1]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[12]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;matplotlib&lt;/span&gt; inline 
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#ignore&lt;/span&gt;
+&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;matplotlib&lt;/span&gt; inline 
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -1006,7 +1007,7 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[2]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[13]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
@@ -1055,7 +1056,7 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[3]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[14]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data/monthly-milk-production-pounds-p.csv&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1068,7 +1069,7 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[4]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[15]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -1084,7 +1085,7 @@ h6:hover .anchor-link {
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[4]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[15]:&lt;/div&gt;
 
 
 
@@ -1150,7 +1151,7 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[5]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[16]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1166,7 +1167,7 @@ h6:hover .anchor-link {
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[5]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[16]:&lt;/div&gt;
 
 
 
@@ -1209,7 +1210,7 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[6]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[17]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Month&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -1225,7 +1226,7 @@ h6:hover .anchor-link {
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[6]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[17]:&lt;/div&gt;
 
 
 
@@ -1247,7 +1248,7 @@ Name: Month, dtype: object&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[7]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[18]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Monthly milk production: pounds per cow. Jan 62 ? Dec 75&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -1263,7 +1264,7 @@ Name: Month, dtype: object&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[7]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[18]:&lt;/div&gt;
 
 
 
@@ -1285,7 +1286,7 @@ Name: Monthly milk production: pounds per cow. Jan 62 ? Dec 75, dtype: int64&lt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[8]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[19]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Month&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
@@ -1301,7 +1302,7 @@ Name: Monthly milk production: pounds per cow. Jan 62 ? Dec 75, dtype: int64&lt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[8]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[19]:&lt;/div&gt;
 
 
 
@@ -1329,7 +1330,7 @@ Name: Monthly milk production: pounds per cow. Jan 62 ? Dec 75, dtype: int64&lt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[9]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[20]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;columns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;month&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;milk&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
@@ -1350,7 +1351,7 @@ Name: Monthly milk production: pounds per cow. Jan 62 ? Dec 75, dtype: int64&lt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[10]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[21]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -1366,7 +1367,7 @@ Name: Monthly milk production: pounds per cow. Jan 62 ? Dec 75, dtype: int64&lt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[10]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[21]:&lt;/div&gt;
 
 
 
@@ -1432,7 +1433,7 @@ Name: Monthly milk production: pounds per cow. Jan 62 ? Dec 75, dtype: int64&lt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[11]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[22]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -1478,7 +1479,7 @@ memory usage: 2.7+ KB
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[12]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[23]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;milk&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -1494,13 +1495,13 @@ memory usage: 2.7+ KB
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[12]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[23]:&lt;/div&gt;
 
 
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;&amp;lt;matplotlib.axes._subplots.AxesSubplot at 0x7f01fd817198&amp;gt;&lt;/pre&gt;
+&lt;pre&gt;&amp;lt;matplotlib.axes._subplots.AxesSubplot at 0x7f51c5ba6780&amp;gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -1525,7 +1526,7 @@ memory usage: 2.7+ KB
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[13]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[24]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;milk&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -1541,7 +1542,7 @@ memory usage: 2.7+ KB
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[13]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[24]:&lt;/div&gt;
 
 
 
@@ -1558,7 +1559,7 @@ memory usage: 2.7+ KB
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[14]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[25]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;milk&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -1574,7 +1575,7 @@ memory usage: 2.7+ KB
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[14]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[25]:&lt;/div&gt;
 
 
 
@@ -1600,7 +1601,7 @@ memory usage: 2.7+ KB
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[15]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[26]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;month&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;apply&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;unique&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -1616,7 +1617,7 @@ memory usage: 2.7+ KB
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[15]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[26]:&lt;/div&gt;
 
 
 
@@ -1651,7 +1652,7 @@ memory usage: 2.7+ KB
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[16]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[27]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Timestamp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;now&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1667,13 +1668,13 @@ memory usage: 2.7+ KB
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[16]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[27]:&lt;/div&gt;
 
 
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;Timestamp(&amp;#39;2018-03-13 02:18:47.158695&amp;#39;)&lt;/pre&gt;
+&lt;pre&gt;Timestamp(&amp;#39;2018-03-13 02:44:21.228560&amp;#39;)&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -1684,7 +1685,7 @@ memory usage: 2.7+ KB
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[17]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[28]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Timestamp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;1992-03-23&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1700,7 +1701,7 @@ memory usage: 2.7+ KB
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[17]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[28]:&lt;/div&gt;
 
 
 
@@ -1717,7 +1718,7 @@ memory usage: 2.7+ KB
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[18]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[29]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Timestamp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;1992-03-23 04&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1733,7 +1734,7 @@ memory usage: 2.7+ KB
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[18]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[29]:&lt;/div&gt;
 
 
 
@@ -1759,7 +1760,7 @@ memory usage: 2.7+ KB
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[19]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[30]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Timestamp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1775,7 +1776,7 @@ memory usage: 2.7+ KB
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[19]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[30]:&lt;/div&gt;
 
 
 
@@ -1792,7 +1793,7 @@ memory usage: 2.7+ KB
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[20]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[31]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Timestamp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;now&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Timestamp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;1992-03-23 04&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1808,7 +1809,7 @@ memory usage: 2.7+ KB
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[20]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[31]:&lt;/div&gt;
 
 
 
@@ -1834,7 +1835,7 @@ memory usage: 2.7+ KB
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[21]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[32]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;month&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_datetime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;month&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
@@ -1847,7 +1848,7 @@ memory usage: 2.7+ KB
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[22]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[33]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_index&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;month&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;milk&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
@@ -1860,7 +1861,7 @@ memory usage: 2.7+ KB
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[23]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[34]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -1876,7 +1877,7 @@ memory usage: 2.7+ KB
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[23]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[34]:&lt;/div&gt;
 
 
 
@@ -1899,7 +1900,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[24]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[35]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
@@ -1915,7 +1916,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[24]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[35]:&lt;/div&gt;
 
 
 
@@ -1932,7 +1933,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[25]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[36]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
@@ -1948,7 +1949,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[25]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[36]:&lt;/div&gt;
 
 
 
@@ -1965,7 +1966,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[26]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[37]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -1981,13 +1982,13 @@ Name: milk, dtype: int64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[26]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[37]:&lt;/div&gt;
 
 
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;&amp;lt;matplotlib.axes._subplots.AxesSubplot at 0x7f01f5280780&amp;gt;&lt;/pre&gt;
+&lt;pre&gt;&amp;lt;matplotlib.axes._subplots.AxesSubplot at 0x7f51bd5e51d0&amp;gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -2021,7 +2022,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[27]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[38]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;min&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -2037,7 +2038,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[27]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[38]:&lt;/div&gt;
 
 
 
@@ -2054,7 +2055,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[28]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[39]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;max&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -2070,7 +2071,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[28]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[39]:&lt;/div&gt;
 
 
 
@@ -2087,7 +2088,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[29]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[40]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;1970&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -2103,13 +2104,13 @@ Name: milk, dtype: int64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[29]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[40]:&lt;/div&gt;
 
 
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;&amp;lt;matplotlib.axes._subplots.AxesSubplot at 0x7f01f51d8160&amp;gt;&lt;/pre&gt;
+&lt;pre&gt;&amp;lt;matplotlib.axes._subplots.AxesSubplot at 0x7f51bd58a208&amp;gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -2134,7 +2135,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[30]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[41]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;1970&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;1972&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;o--&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2150,13 +2151,13 @@ Name: milk, dtype: int64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[30]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[41]:&lt;/div&gt;
 
 
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;&amp;lt;matplotlib.axes._subplots.AxesSubplot at 0x7f01f51b5a20&amp;gt;&lt;/pre&gt;
+&lt;pre&gt;&amp;lt;matplotlib.axes._subplots.AxesSubplot at 0x7f51bd565dd8&amp;gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -2198,7 +2199,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[31]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[42]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;resample&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;12M&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;o--&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2214,13 +2215,13 @@ Name: milk, dtype: int64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[31]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[42]:&lt;/div&gt;
 
 
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;&amp;lt;matplotlib.axes._subplots.AxesSubplot at 0x7f01f50a75f8&amp;gt;&lt;/pre&gt;
+&lt;pre&gt;&amp;lt;matplotlib.axes._subplots.AxesSubplot at 0x7f51bd454358&amp;gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -2245,7 +2246,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[32]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[43]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;resample&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;6M&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;o--&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2261,13 +2262,13 @@ Name: milk, dtype: int64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[32]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[43]:&lt;/div&gt;
 
 
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;&amp;lt;matplotlib.axes._subplots.AxesSubplot at 0x7f01f5236e48&amp;gt;&lt;/pre&gt;
+&lt;pre&gt;&amp;lt;matplotlib.axes._subplots.AxesSubplot at 0x7f51bd39b748&amp;gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -2309,7 +2310,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[33]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[44]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2325,7 +2326,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[33]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[44]:&lt;/div&gt;
 
 
 
@@ -2342,7 +2343,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[34]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[45]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2358,7 +2359,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[34]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[45]:&lt;/div&gt;
 
 
 
@@ -2375,7 +2376,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[35]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[46]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;
@@ -2391,7 +2392,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[35]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[46]:&lt;/div&gt;
 
 
 
@@ -2408,7 +2409,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[36]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[47]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;
@@ -2424,7 +2425,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[36]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[47]:&lt;/div&gt;
 
 
 
@@ -2443,7 +2444,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[37]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[48]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# dot product&lt;/span&gt;
@@ -2459,7 +2460,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[37]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[48]:&lt;/div&gt;
 
 
 
@@ -2476,7 +2477,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[38]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[49]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;
@@ -2492,7 +2493,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[38]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[49]:&lt;/div&gt;
 
 
 
@@ -2524,7 +2525,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[39]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[50]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;
@@ -2540,7 +2541,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[39]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[50]:&lt;/div&gt;
 
 
 
@@ -2586,7 +2587,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[40]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[51]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -2602,7 +2603,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[40]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[51]:&lt;/div&gt;
 
 
 
@@ -2636,7 +2637,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[41]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[52]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;α&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
@@ -2654,7 +2655,7 @@ Name: milk, dtype: int64&lt;/pre&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[41]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[52]:&lt;/div&gt;
 
 
 
@@ -2683,7 +2684,7 @@ $$\alpha = \bar{y} - \beta \bar{x}$$&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[42]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[53]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;
@@ -2697,7 +2698,7 @@ $$\alpha = \bar{y} - \beta \bar{x}$$&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[43]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[54]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;β&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cov&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;])[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -2711,7 +2712,7 @@ $$\alpha = \bar{y} - \beta \bar{x}$$&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[44]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[55]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;α&lt;/span&gt;
@@ -2727,7 +2728,7 @@ $$\alpha = \bar{y} - \beta \bar{x}$$&lt;/p&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[44]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[55]:&lt;/div&gt;
 
 
 
@@ -2742,9 +2743,18 @@ $$\alpha = \bar{y} - \beta \bar{x}$$&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;$\alpha$ = {{a}}&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[45]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[56]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;β&lt;/span&gt;
@@ -2760,7 +2770,7 @@ $$\alpha = \bar{y} - \beta \bar{x}$$&lt;/p&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[45]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[56]:&lt;/div&gt;
 
 
 
@@ -2777,7 +2787,7 @@ $$\alpha = \bar{y} - \beta \bar{x}$$&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[46]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[57]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
@@ -2798,13 +2808,13 @@ $$\alpha = \bar{y} - \beta \bar{x}$$&lt;/p&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[46]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[57]:&lt;/div&gt;
 
 
 
 
 &lt;div class="output_text output_subarea output_execute_result"&gt;
-&lt;pre&gt;&amp;lt;matplotlib.axes._subplots.AxesSubplot at 0x7f01f4f95a58&amp;gt;&lt;/pre&gt;
+&lt;pre&gt;&amp;lt;matplotlib.axes._subplots.AxesSubplot at 0x7f51bd34a7b8&amp;gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
