@@ -1037,8 +1037,7 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; ~/.kaggle/competitions/how-good-is-your-medium-article/
-head -n1 train.json &lt;span class="p"&gt;|&lt;/span&gt; jq &lt;span class="s1"&gt;&amp;#39;del(.content)&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;head -n1 ~/.kaggle/competitions/how-good-is-your-medium-article/train.json &lt;span class="p"&gt;|&lt;/span&gt; jq &lt;span class="s1"&gt;&amp;#39;del(.content)&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="nt"&gt;&amp;quot;_id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://medium.com/policy/medium-terms-of-service-9db0094a1e0f&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -3600,10 +3599,10 @@ h6:hover .anchor-link {
 
 
 
-&lt;div id="77d9a110-8149-429b-b39e-04b4870ba6ec"&gt;&lt;/div&gt;
+&lt;div id="f6284a0e-af83-4724-a29a-2736ade4ef34"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#77d9a110-8149-429b-b39e-04b4870ba6ec');
+var element = $('#f6284a0e-af83-4724-a29a-2736ade4ef34');
 
 (function(root) {
   function now() {
@@ -4452,10 +4451,10 @@ kaggle competitions download -c web-traffic-time-series-forecasting
 
 
 
-&lt;div id="ceed3594-1c29-4997-8cbb-a61b3f39b590"&gt;&lt;/div&gt;
+&lt;div id="def936ed-cdbd-4999-85ba-f2dc2f2e3766"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#ceed3594-1c29-4997-8cbb-a61b3f39b590');
+var element = $('#def936ed-cdbd-4999-85ba-f2dc2f2e3766');
 (function(root) {
   function embed_document(root) {
     
@@ -4557,10 +4556,10 @@ var element = $('#ceed3594-1c29-4997-8cbb-a61b3f39b590');
 
 
 
-&lt;div id="a9f4c200-88b5-4d76-9dc3-bd49583d9535"&gt;&lt;/div&gt;
+&lt;div id="bcbaf0ad-8ff6-45f9-acc8-7c2d42e578da"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#a9f4c200-88b5-4d76-9dc3-bd49583d9535');
+var element = $('#bcbaf0ad-8ff6-45f9-acc8-7c2d42e578da');
 (function(root) {
   function embed_document(root) {
     
@@ -5718,10 +5717,10 @@ h6:hover .anchor-link {
 
 
 
-&lt;div id="9989d60f-3c27-42af-b837-6184b0bb391f"&gt;&lt;/div&gt;
+&lt;div id="45824579-3fe0-445d-9c2c-6e94d08f45b3"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#9989d60f-3c27-42af-b837-6184b0bb391f');
+var element = $('#45824579-3fe0-445d-9c2c-6e94d08f45b3');
 
 (function(root) {
   function now() {
@@ -6357,10 +6356,10 @@ var element = $('#9989d60f-3c27-42af-b837-6184b0bb391f');
 
 
 
-&lt;div id="05680948-5532-44db-af46-7207a9804720"&gt;&lt;/div&gt;
+&lt;div id="acb27e0a-f242-4008-bd66-c4a22b001e3a"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#05680948-5532-44db-af46-7207a9804720');
+var element = $('#acb27e0a-f242-4008-bd66-c4a22b001e3a');
 (function(root) {
   function embed_document(root) {
     
@@ -6490,10 +6489,10 @@ var element = $('#05680948-5532-44db-af46-7207a9804720');
 
 
 
-&lt;div id="bb6358cd-0eb3-42a4-9102-9951fbca5f07"&gt;&lt;/div&gt;
+&lt;div id="8a0ae46f-71a7-4503-8b96-7c7a5c1d26af"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#bb6358cd-0eb3-42a4-9102-9951fbca5f07');
+var element = $('#8a0ae46f-71a7-4503-8b96-7c7a5c1d26af');
 (function(root) {
   function embed_document(root) {
     
