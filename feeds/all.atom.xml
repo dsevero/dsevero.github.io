@@ -1187,13 +1187,13 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[51]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[129]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;make_datum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="s1"&gt;&amp;#39;published_timestamp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;published&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{})&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;$date&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-        &lt;span class="s1"&gt;&amp;#39;read_time&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;meta_tags&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{})&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;twitter:data1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;published_timestamp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;published&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;$date&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;read_time&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;meta_tags&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;twitter:data1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 
 &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;train_file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    
@@ -1211,7 +1211,7 @@ h6:hover .anchor-link {
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[51]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[129]:&lt;/div&gt;
 
 
 
@@ -3599,10 +3599,10 @@ h6:hover .anchor-link {
 
 
 
-&lt;div id="f6284a0e-af83-4724-a29a-2736ade4ef34"&gt;&lt;/div&gt;
+&lt;div id="4e9e26ca-ff3f-4eae-88bf-b4a77a4b8dee"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#f6284a0e-af83-4724-a29a-2736ade4ef34');
+var element = $('#4e9e26ca-ff3f-4eae-88bf-b4a77a4b8dee');
 
 (function(root) {
   function now() {
@@ -4451,10 +4451,10 @@ kaggle competitions download -c web-traffic-time-series-forecasting
 
 
 
-&lt;div id="def936ed-cdbd-4999-85ba-f2dc2f2e3766"&gt;&lt;/div&gt;
+&lt;div id="200039ed-e711-4f4c-9c12-c04e20db7edb"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#def936ed-cdbd-4999-85ba-f2dc2f2e3766');
+var element = $('#200039ed-e711-4f4c-9c12-c04e20db7edb');
 (function(root) {
   function embed_document(root) {
     
@@ -4556,10 +4556,10 @@ var element = $('#def936ed-cdbd-4999-85ba-f2dc2f2e3766');
 
 
 
-&lt;div id="bcbaf0ad-8ff6-45f9-acc8-7c2d42e578da"&gt;&lt;/div&gt;
+&lt;div id="46f5060f-14d2-4507-ac95-c6838d30c085"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#bcbaf0ad-8ff6-45f9-acc8-7c2d42e578da');
+var element = $('#46f5060f-14d2-4507-ac95-c6838d30c085');
 (function(root) {
   function embed_document(root) {
     
@@ -5717,10 +5717,10 @@ h6:hover .anchor-link {
 
 
 
-&lt;div id="45824579-3fe0-445d-9c2c-6e94d08f45b3"&gt;&lt;/div&gt;
+&lt;div id="3ba3af52-012d-4b1e-bd05-61f926ba8f76"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#45824579-3fe0-445d-9c2c-6e94d08f45b3');
+var element = $('#3ba3af52-012d-4b1e-bd05-61f926ba8f76');
 
 (function(root) {
   function now() {
@@ -6356,10 +6356,10 @@ var element = $('#45824579-3fe0-445d-9c2c-6e94d08f45b3');
 
 
 
-&lt;div id="acb27e0a-f242-4008-bd66-c4a22b001e3a"&gt;&lt;/div&gt;
+&lt;div id="3121a918-ea9b-4e8e-91f5-aea2ee95513b"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#acb27e0a-f242-4008-bd66-c4a22b001e3a');
+var element = $('#3121a918-ea9b-4e8e-91f5-aea2ee95513b');
 (function(root) {
   function embed_document(root) {
     
@@ -6489,10 +6489,10 @@ var element = $('#acb27e0a-f242-4008-bd66-c4a22b001e3a');
 
 
 
-&lt;div id="8a0ae46f-71a7-4503-8b96-7c7a5c1d26af"&gt;&lt;/div&gt;
+&lt;div id="3ac9f6dc-45c8-4f79-b93b-8bac716f8ab7"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#8a0ae46f-71a7-4503-8b96-7c7a5c1d26af');
+var element = $('#3ac9f6dc-45c8-4f79-b93b-8bac716f8ab7');
 (function(root) {
   function embed_document(root) {
     
