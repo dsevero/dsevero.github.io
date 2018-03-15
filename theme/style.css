@@ -18,7 +18,7 @@
 }
 
 .text_cell {
-    font-size: 18px;
+    font-size: 14px;
 }
 
 /* Format summary rows */
@@ -40,7 +40,7 @@ html {
 }
 
 body {
-  font-family: 'Libre Baskerville', Garamond, serif;
+  font-family: 'sans-serif';
 }
 
 .summary {
