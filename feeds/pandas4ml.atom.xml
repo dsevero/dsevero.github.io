@@ -1008,9 +1008,10 @@ h6:hover .anchor-link {
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;For this tutorial we will need only 1 file.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;kaggle competitions download -c how-good-is-your-medium-article -f train.json.gz
-gunzip -k ~/.kaggle/competitions/how-good-is-your-medium-article/train.json.gz
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The reason for decompressing will become clear later.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;gunzip -k ~/.kaggle/competitions/how-good-is-your-medium-article/train.json.gz
+&lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3599,10 +3600,10 @@ h6:hover .anchor-link {
 
 
 
-&lt;div id="f86df4f9-c9ec-42f5-ae36-1ab44b192233"&gt;&lt;/div&gt;
+&lt;div id="77d9a110-8149-429b-b39e-04b4870ba6ec"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#f86df4f9-c9ec-42f5-ae36-1ab44b192233');
+var element = $('#77d9a110-8149-429b-b39e-04b4870ba6ec');
 
 (function(root) {
   function now() {
@@ -4451,10 +4452,10 @@ kaggle competitions download -c web-traffic-time-series-forecasting
 
 
 
-&lt;div id="15839cad-468b-4b00-8fa6-bca263bd34fa"&gt;&lt;/div&gt;
+&lt;div id="ceed3594-1c29-4997-8cbb-a61b3f39b590"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#15839cad-468b-4b00-8fa6-bca263bd34fa');
+var element = $('#ceed3594-1c29-4997-8cbb-a61b3f39b590');
 (function(root) {
   function embed_document(root) {
     
@@ -4556,10 +4557,10 @@ var element = $('#15839cad-468b-4b00-8fa6-bca263bd34fa');
 
 
 
-&lt;div id="a749bd74-ef41-4033-8ad4-e799d880dabf"&gt;&lt;/div&gt;
+&lt;div id="a9f4c200-88b5-4d76-9dc3-bd49583d9535"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#a749bd74-ef41-4033-8ad4-e799d880dabf');
+var element = $('#a9f4c200-88b5-4d76-9dc3-bd49583d9535');
 (function(root) {
   function embed_document(root) {
     
@@ -5717,10 +5718,10 @@ h6:hover .anchor-link {
 
 
 
-&lt;div id="d685df2f-7bab-45aa-be14-64e7c8251ba3"&gt;&lt;/div&gt;
+&lt;div id="9989d60f-3c27-42af-b837-6184b0bb391f"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#d685df2f-7bab-45aa-be14-64e7c8251ba3');
+var element = $('#9989d60f-3c27-42af-b837-6184b0bb391f');
 
 (function(root) {
   function now() {
@@ -6356,10 +6357,10 @@ var element = $('#d685df2f-7bab-45aa-be14-64e7c8251ba3');
 
 
 
-&lt;div id="2e4e0767-79cf-4e8a-8b76-66fea809b782"&gt;&lt;/div&gt;
+&lt;div id="05680948-5532-44db-af46-7207a9804720"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#2e4e0767-79cf-4e8a-8b76-66fea809b782');
+var element = $('#05680948-5532-44db-af46-7207a9804720');
 (function(root) {
   function embed_document(root) {
     
@@ -6489,10 +6490,10 @@ var element = $('#2e4e0767-79cf-4e8a-8b76-66fea809b782');
 
 
 
-&lt;div id="26eb10f5-e134-4752-87b2-10257890e442"&gt;&lt;/div&gt;
+&lt;div id="bb6358cd-0eb3-42a4-9102-9951fbca5f07"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#26eb10f5-e134-4752-87b2-10257890e442');
+var element = $('#bb6358cd-0eb3-42a4-9102-9951fbca5f07');
 (function(root) {
   function embed_document(root) {
     
