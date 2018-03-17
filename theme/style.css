@@ -21,6 +21,13 @@
     font-size: 14px;
 }
 
+.output_area {
+    margin: 0 auto;
+}
+
+.output_subarea {
+    max-width: 100% !important;
+}
 /* Format summary rows */
 .dataframe-summary-row tr:last-child,
 .dataframe-summary-col td:last-child{

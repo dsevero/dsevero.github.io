@@ -4,7 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
-    <title>Untitled - Severo's Blog</title>
+    <title>Ad hoc Big Data Analysis with Dask - Severo's Blog</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
@@ -18,7 +18,7 @@
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://daniel-severo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Severo's Blog Full Atom Feed" />
-    <link href="https://daniel-severo.github.io/feeds/pandas4ml.atom.xml" type="application/atom+xml" rel="alternate" title="Severo's Blog Categories Atom Feed" />
+    <link href="https://daniel-severo.github.io/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="Severo's Blog Categories Atom Feed" />
   </head>
   <body id="index" class="archive">
     <!--[if lt IE 7]>
@@ -47,10 +47,10 @@
     <section id="content" class="article content">
       <header>
         <h2 class="entry-title">
-          Untitled
+          Ad hoc Big Data Analysis with Dask
         </h2>
         
-        <div class="text-muted">Wed 14 March 2018</div>
+        <div class="text-muted">Sat 17 March 2018</div>
       </header>
 <!-- .entry-content -->
       <div class="entry-content">
@@ -1030,7 +1030,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="1.-Kaggle-data">1. Kaggle data<a class="anchor-link" href="#1.-Kaggle-data">&#182;</a></h1><p>Kaggle can provide us with a ton of datasets. We will be using the official kaggle api to automate our data fetching process.</p>
+<h3 id="1.-Kaggle-data">1. Kaggle data<a class="anchor-link" href="#1.-Kaggle-data">&#182;</a></h3><p>Kaggle can provide us with a ton of datasets. We will be using the official kaggle api to automate our data fetching process.</p>
 <ol>
 <li>Log on to kaggle and enter the <a href="https://www.kaggle.com/c/how-good-is-your-medium-article">How good is your Medium article?</a> competition.</li>
 <li>Configure the official kaggle api <a href="https://github.com/Kaggle/kaggle-api">following these steps</a>.</li>
@@ -1057,7 +1057,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="2.-Exploration.">2. Exploration.<a class="anchor-link" href="#2.-Exploration.">&#182;</a></h1>
+<h3 id="2.-Exploration.">2. Exploration.<a class="anchor-link" href="#2.-Exploration.">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -1178,7 +1178,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="3.-The-good,-the-bad-and-the-ugly-solutions">3. The good, the bad and the ugly solutions<a class="anchor-link" href="#3.-The-good,-the-bad-and-the-ugly-solutions">&#182;</a></h1>
+<h3 id="4.-The-good,-the-bad-and-the-ugly-solutions">4. The good, the bad and the ugly solutions<a class="anchor-link" href="#4.-The-good,-the-bad-and-the-ugly-solutions">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -1219,7 +1219,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="The-Ugly">The Ugly<a class="anchor-link" href="#The-Ugly">&#182;</a></h2>
+<h4 id="The-Ugly">The Ugly<a class="anchor-link" href="#The-Ugly">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -1236,86 +1236,16 @@ h6:hover .anchor-link {
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">train_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>    
     <span class="n">ugly_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">make_datum</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">f</span><span class="p">])</span>
-<span class="n">ugly_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[3]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>published_timestamp</th>
-      <th>read_time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2012-08-13T22:54:53.510Z</td>
-      <td>5 min read</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2015-08-03T07:44:50.331Z</td>
-      <td>7 min read</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2017-02-05T13:08:17.410Z</td>
-      <td>2 min read</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2017-05-06T08:16:30.776Z</td>
-      <td>3 min read</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2017-06-04T14:46:25.772Z</td>
-      <td>4 min read</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[59]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ugly_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -1331,7 +1261,7 @@ h6:hover .anchor-link {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[59]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -1397,7 +1327,7 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[60]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span>
@@ -1420,7 +1350,7 @@ h6:hover .anchor-link {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[60]:</div>
+<div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -1486,7 +1416,7 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[61]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span>
@@ -1508,7 +1438,7 @@ h6:hover .anchor-link {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[61]:</div>
+<div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -1568,7 +1498,7 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[62]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span>
@@ -1589,7 +1519,7 @@ h6:hover .anchor-link {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[62]:</div>
+<div class="prompt output_prompt">Out[8]:</div>
 
 
 
@@ -1645,7 +1575,7 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span>
@@ -1675,7 +1605,7 @@ h6:hover .anchor-link {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[63]:</div>
+<div class="prompt output_prompt">Out[9]:</div>
 
 
 
@@ -1757,13 +1687,13 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="The-Good">The Good<a class="anchor-link" href="#The-Good">&#182;</a></h2>
+<h4 id="The-Good">The Good<a class="anchor-link" href="#The-Good">&#182;</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span>
@@ -1850,10 +1780,22 @@ h6:hover .anchor-link {
 <!-- /.entry-content -->
       <footer class="post-info text-muted">
         <button type="button" class="btn btn-default">          
-          <a href="https://daniel-severo.github.io/category/pandas4ml.html"><div class="fa fa-lg fa-folder-open"></div> pandas4ml</a>
+          <a href="https://daniel-severo.github.io/category/misc.html"><div class="fa fa-lg fa-folder-open"></div> misc</a>
         </button>
         <button type="button" class="btn btn-default">
-          <a href="https://daniel-severo.github.io/tag/test.html"><div class="fa fa-lg fa-tag"></div> Test</a>
+          <a href="https://daniel-severo.github.io/tag/pandas.html"><div class="fa fa-lg fa-tag"></div> pandas</a>
+        </button>
+        <button type="button" class="btn btn-default">
+          <a href="https://daniel-severo.github.io/tag/dask.html"><div class="fa fa-lg fa-tag"></div> dask</a>
+        </button>
+        <button type="button" class="btn btn-default">
+          <a href="https://daniel-severo.github.io/tag/method-chaining.html"><div class="fa fa-lg fa-tag"></div> method-chaining</a>
+        </button>
+        <button type="button" class="btn btn-default">
+          <a href="https://daniel-severo.github.io/tag/out-of-core.html"><div class="fa fa-lg fa-tag"></div> out-of-core</a>
+        </button>
+        <button type="button" class="btn btn-default">
+          <a href="https://daniel-severo.github.io/tag/parallel-processing.html"><div class="fa fa-lg fa-tag"></div> parallel-processing</a>
         </button>
       </footer>
       <!-- /.post-info -->
