@@ -6,11 +6,11 @@
 }
 .dataframe th {
     background: #eee;
-    padding: 0 15px
+    padding: 0 10px;
 }
 .dataframe td {
     text-align: right; min-width:5em;
-    padding: 0 15px
+    padding: 0 10px;
 }
 
 .prompt {
