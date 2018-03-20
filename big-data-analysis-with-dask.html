@@ -1886,7 +1886,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Other methods like <code>.head(N)</code> also force the dataframe to be computed. Since this call needs only <code>N</code> rows to be computed, dask will partially solve the graph such that only the first <code>N</code> records are processed.</p>
+<p>Other methods like <code>.head(N)</code> also force the dataframe to be computed. Since this call needs only the first <code>N</code> rows, dask will partially solve the graph such that only those are processed.</p>
 
 </div>
 </div>
@@ -2146,7 +2146,7 @@ $$\alpha = \bar{y} - \beta \bar{x}$$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_pred</span> <span class="o">=</span> <span class="p">(</span>
@@ -2157,7 +2157,7 @@ $$\alpha = \bar{y} - \beta \bar{x}$$</p>
     <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">sum_pred</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">z</span><span class="p">:</span> <span class="n">z</span><span class="p">[</span><span class="s1">&#39;sum_alpha&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">z</span><span class="p">[</span><span class="s1">&#39;sum_beta&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">z</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">asi8</span><span class="p">)</span>
 <span class="p">)</span>
 
-<span class="n">df_pred</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df_pred</span><span class="p">[[</span><span class="s1">&#39;mean_alpha&#39;</span><span class="p">,</span> <span class="s1">&#39;mean_beta&#39;</span><span class="p">,</span> <span class="s1">&#39;sum_alpha&#39;</span><span class="p">,</span> <span class="s1">&#39;sum_beta&#39;</span><span class="p">,</span> <span class="s1">&#39;mean_pred&#39;</span><span class="p">,</span> <span class="s1">&#39;sum_pred&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -2170,7 +2170,7 @@ $$\alpha = \bar{y} - \beta \bar{x}$$</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[14]:</div>
+<div class="prompt output_prompt">Out[17]:</div>
 
 
 
@@ -2193,8 +2193,6 @@ $$\alpha = \bar{y} - \beta \bar{x}$$</p>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>mean</th>
-      <th>sum</th>
       <th>mean_alpha</th>
       <th>mean_beta</th>
       <th>sum_alpha</th>
@@ -2206,8 +2204,6 @@ $$\alpha = \bar{y} - \beta \bar{x}$$</p>
   <tbody>
     <tr>
       <th>2015-01-01</th>
-      <td>8.380952</td>
-      <td>4928</td>
       <td>27.130799</td>
       <td>-1.351069e-17</td>
       <td>-407905.660648</td>
@@ -2217,8 +2213,6 @@ $$\alpha = \bar{y} - \beta \bar{x}$$</p>
     </tr>
     <tr>
       <th>2015-02-01</th>
-      <td>7.887564</td>
-      <td>4630</td>
       <td>27.130799</td>
       <td>-1.351069e-17</td>
       <td>-407905.660648</td>
@@ -2228,8 +2222,6 @@ $$\alpha = \bar{y} - \beta \bar{x}$$</p>
     </tr>
     <tr>
       <th>2015-03-01</th>
-      <td>7.907840</td>
-      <td>5749</td>
       <td>27.130799</td>
       <td>-1.351069e-17</td>
       <td>-407905.660648</td>
@@ -2239,8 +2231,6 @@ $$\alpha = \bar{y} - \beta \bar{x}$$</p>
     </tr>
     <tr>
       <th>2015-04-01</th>
-      <td>7.667149</td>
-      <td>5298</td>
       <td>27.130799</td>
       <td>-1.351069e-17</td>
       <td>-407905.660648</td>
@@ -2250,8 +2240,6 @@ $$\alpha = \bar{y} - \beta \bar{x}$$</p>
     </tr>
     <tr>
       <th>2015-05-01</th>
-      <td>8.307506</td>
-      <td>6862</td>
       <td>27.130799</td>
       <td>-1.351069e-17</td>
       <td>-407905.660648</td>

@@ -1836,7 +1836,7 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Other methods like &lt;code&gt;.head(N)&lt;/code&gt; also force the dataframe to be computed. Since this call needs only &lt;code&gt;N&lt;/code&gt; rows to be computed, dask will partially solve the graph such that only the first &lt;code&gt;N&lt;/code&gt; records are processed.&lt;/p&gt;
+&lt;p&gt;Other methods like &lt;code&gt;.head(N)&lt;/code&gt; also force the dataframe to be computed. Since this call needs only the first &lt;code&gt;N&lt;/code&gt; rows, dask will partially solve the graph such that only those are processed.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2096,7 +2096,7 @@ $$\alpha = \bar{y} - \beta \bar{x}$$&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[14]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[17]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
 &lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df_pred&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
@@ -2107,7 +2107,7 @@ $$\alpha = \bar{y} - \beta \bar{x}$$&lt;/p&gt;
     &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assign&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sum_pred&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;sum_alpha&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;sum_beta&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;asi8&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="n"&gt;df_pred&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;df_pred&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;mean_alpha&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;mean_beta&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;sum_alpha&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;sum_beta&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;mean_pred&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;sum_pred&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -2120,7 +2120,7 @@ $$\alpha = \bar{y} - \beta \bar{x}$$&lt;/p&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[14]:&lt;/div&gt;
+&lt;div class="prompt output_prompt"&gt;Out[17]:&lt;/div&gt;
 
 
 
@@ -2143,8 +2143,6 @@ $$\alpha = \bar{y} - \beta \bar{x}$$&lt;/p&gt;
   &lt;thead&gt;
     &lt;tr style="text-align: right;"&gt;
       &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;mean&lt;/th&gt;
-      &lt;th&gt;sum&lt;/th&gt;
       &lt;th&gt;mean_alpha&lt;/th&gt;
       &lt;th&gt;mean_beta&lt;/th&gt;
       &lt;th&gt;sum_alpha&lt;/th&gt;
@@ -2156,8 +2154,6 @@ $$\alpha = \bar{y} - \beta \bar{x}$$&lt;/p&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
       &lt;th&gt;2015-01-01&lt;/th&gt;
-      &lt;td&gt;8.380952&lt;/td&gt;
-      &lt;td&gt;4928&lt;/td&gt;
       &lt;td&gt;27.130799&lt;/td&gt;
       &lt;td&gt;-1.351069e-17&lt;/td&gt;
       &lt;td&gt;-407905.660648&lt;/td&gt;
@@ -2167,8 +2163,6 @@ $$\alpha = \bar{y} - \beta \bar{x}$$&lt;/p&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;th&gt;2015-02-01&lt;/th&gt;
-      &lt;td&gt;7.887564&lt;/td&gt;
-      &lt;td&gt;4630&lt;/td&gt;
       &lt;td&gt;27.130799&lt;/td&gt;
       &lt;td&gt;-1.351069e-17&lt;/td&gt;
       &lt;td&gt;-407905.660648&lt;/td&gt;
@@ -2178,8 +2172,6 @@ $$\alpha = \bar{y} - \beta \bar{x}$$&lt;/p&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;th&gt;2015-03-01&lt;/th&gt;
-      &lt;td&gt;7.907840&lt;/td&gt;
-      &lt;td&gt;5749&lt;/td&gt;
       &lt;td&gt;27.130799&lt;/td&gt;
       &lt;td&gt;-1.351069e-17&lt;/td&gt;
       &lt;td&gt;-407905.660648&lt;/td&gt;
@@ -2189,8 +2181,6 @@ $$\alpha = \bar{y} - \beta \bar{x}$$&lt;/p&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;th&gt;2015-04-01&lt;/th&gt;
-      &lt;td&gt;7.667149&lt;/td&gt;
-      &lt;td&gt;5298&lt;/td&gt;
       &lt;td&gt;27.130799&lt;/td&gt;
       &lt;td&gt;-1.351069e-17&lt;/td&gt;
       &lt;td&gt;-407905.660648&lt;/td&gt;
@@ -2200,8 +2190,6 @@ $$\alpha = \bar{y} - \beta \bar{x}$$&lt;/p&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;th&gt;2015-05-01&lt;/th&gt;
-      &lt;td&gt;8.307506&lt;/td&gt;
-      &lt;td&gt;6862&lt;/td&gt;
       &lt;td&gt;27.130799&lt;/td&gt;
       &lt;td&gt;-1.351069e-17&lt;/td&gt;
       &lt;td&gt;-407905.660648&lt;/td&gt;
