@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'D. Severo'
-SITENAME = "Severo's Blog"
+SITENAME = ""
 
 PATH = 'content'
 
@@ -39,6 +39,6 @@ MARKUP = ('md', 'ipynb')
 
 PLUGIN_PATHS = ['./plugins']
 PLUGINS = ['ipynb.markup']
-IGNORE_FILES = ['.ipynb_checkpoints']
+IGNORE_FILES = ['.ipynb_checkpoints', 'drafts']
 LOCALE = 'en_US.UTF-8'
 DISQUS_SITENAME = 'dsevero'

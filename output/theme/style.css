@@ -6,11 +6,11 @@
 }
 .dataframe th {
     background: #eee;
-    padding: 0 15px
+    padding: 0 10px;
 }
 .dataframe td {
     text-align: right; min-width:5em;
-    padding: 0 15px
+    padding: 0 10px;
 }
 
 .prompt {
@@ -21,6 +21,13 @@
     font-size: 14px;
 }
 
+.output_area {
+    margin: 0 auto;
+}
+
+.output_subarea {
+    max-width: 100% !important;
+}
 /* Format summary rows */
 .dataframe-summary-row tr:last-child,
 .dataframe-summary-col td:last-child{
