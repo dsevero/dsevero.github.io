@@ -1,0 +1,157 @@
+[I 13:09:53.691 NotebookApp] Writing notebook server cookie secret to /run/user/1000/jupyter/notebook_cookie_secret
+[I 13:09:54.393 NotebookApp] Serving notebooks from local directory: /home/severo/Projects/daniel-severo.github.io
+[I 13:09:54.393 NotebookApp] The Jupyter Notebook is running at:
+[I 13:09:54.393 NotebookApp] http://localhost:8888/?token=8329472996afeee893a34176124c72a66b1536b0b7a696c1
+[I 13:09:54.394 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 13:09:54.434 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8888/?token=8329472996afeee893a34176124c72a66b1536b0b7a696c1
+[I 13:09:55.096 NotebookApp] Accepting one-time-token-authenticated connection from 127.0.0.1
+[I 13:10:17.452 NotebookApp] Interrupted...
+[I 13:10:17.452 NotebookApp] Shutting down 0 kernels
+[I 13:11:36.821 NotebookApp] Serving notebooks from local directory: /home/severo/Projects/daniel-severo.github.io
+[I 13:11:36.822 NotebookApp] The Jupyter Notebook is running at:
+[I 13:11:36.822 NotebookApp] http://localhost:8888/?token=50d26f3058286de6b3c10782575abb777afc30ecad8669d7
+[I 13:11:36.822 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 13:11:36.862 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8888/?token=50d26f3058286de6b3c10782575abb777afc30ecad8669d7
+[I 13:11:37.559 NotebookApp] Accepting one-time-token-authenticated connection from 127.0.0.1
+[I 13:12:03.674 NotebookApp] Kernel started: cd6b8007-76cf-4f56-9b54-bf804834db45
+[I 13:12:05.334 NotebookApp] Adapting to protocol v5.1 for kernel cd6b8007-76cf-4f56-9b54-bf804834db45
+[I 13:12:16.766 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:12:43.013 NotebookApp] Interrupted...
+[I 13:12:43.013 NotebookApp] Shutting down 1 kernel
+Traceback (most recent call last):
+  File "/home/severo/miniconda3/envs/dsevero.com/bin/jupyter-notebook", line 11, in <module>
+    sys.exit(main())
+  File "/home/severo/miniconda3/envs/dsevero.com/lib/python3.7/site-packages/jupyter_core/application.py", line 266, in launch_instance
+    return super(JupyterApp, cls).launch_instance(argv=argv, **kwargs)
+  File "/home/severo/miniconda3/envs/dsevero.com/lib/python3.7/site-packages/traitlets/config/application.py", line 658, in launch_instance
+    app.start()
+  File "/home/severo/miniconda3/envs/dsevero.com/lib/python3.7/site-packages/notebook/notebookapp.py", line 1768, in start
+    self.cleanup_kernels()
+  File "/home/severo/miniconda3/envs/dsevero.com/lib/python3.7/site-packages/notebook/notebookapp.py", line 1645, in cleanup_kernels
+    self.kernel_manager.shutdown_all()
+  File "/home/severo/miniconda3/envs/dsevero.com/lib/python3.7/site-packages/jupyter_client/multikernelmanager.py", line 160, in shutdown_all
+    self.finish_shutdown(kid)
+  File "/home/severo/miniconda3/envs/dsevero.com/lib/python3.7/site-packages/jupyter_client/multikernelmanager.py", line 33, in wrapped
+    r = method(*args, **kwargs)
+  File "/home/severo/miniconda3/envs/dsevero.com/lib/python3.7/site-packages/jupyter_client/manager.py", line 282, in finish_shutdown
+    time.sleep(pollinterval)
+KeyboardInterrupt
+[I 13:13:37.164 NotebookApp] Serving notebooks from local directory: /home/severo/Projects/daniel-severo.github.io
+[I 13:13:37.164 NotebookApp] The Jupyter Notebook is running at:
+[I 13:13:37.164 NotebookApp] http://localhost:8888/?token=5505542376615f2b96d7d0066b943522c165c7bb2b153e5a
+[I 13:13:37.164 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 13:13:37.204 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8888/?token=5505542376615f2b96d7d0066b943522c165c7bb2b153e5a
+[I 13:13:37.850 NotebookApp] Accepting one-time-token-authenticated connection from 127.0.0.1
+[I 13:13:49.481 NotebookApp] Kernel started: 0b3bc376-413d-4941-82e0-ee2235b6876b
+[I 13:13:51.124 NotebookApp] Adapting to protocol v5.1 for kernel 0b3bc376-413d-4941-82e0-ee2235b6876b
+[I 13:13:53.210 NotebookApp] Starting buffering for 0b3bc376-413d-4941-82e0-ee2235b6876b:596c92e05b614c838f933b627cacdebe
+[I 13:13:53.629 NotebookApp] Kernel restarted: 0b3bc376-413d-4941-82e0-ee2235b6876b
+[I 13:13:55.172 NotebookApp] Adapting to protocol v5.1 for kernel 0b3bc376-413d-4941-82e0-ee2235b6876b
+[I 13:13:55.174 NotebookApp] Restoring connection for 0b3bc376-413d-4941-82e0-ee2235b6876b:596c92e05b614c838f933b627cacdebe
+[I 13:13:55.174 NotebookApp] Replaying 6 buffered messages
+[I 13:15:25.942 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:19:49.447 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:21:49.444 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:21:55.890 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:23:06.054 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:23:17.624 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:23:48.036 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:23:57.968 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:24:13.271 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:24:28.492 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:24:44.196 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:25:19.721 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:25:21.237 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:25:28.257 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:25:38.449 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:25:44.082 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:25:44.839 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:25:51.288 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:26:33.648 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:26:50.714 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:27:34.356 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:28:25.136 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:28:25.953 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:28:28.595 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:28:38.403 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:29:05.644 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:29:08.693 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:29:19.066 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:31:08.930 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:31:24.207 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:31:29.709 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:31:43.703 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:31:49.446 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:32:15.141 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:32:21.906 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:32:33.225 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:33:04.465 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:33:17.439 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:33:49.436 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:34:42.462 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:34:47.048 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:36:48.275 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:37:24.687 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:37:33.958 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:37:41.169 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:37:49.439 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:38:57.032 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:39:13.748 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:39:38.348 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:40:13.226 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:40:37.486 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:40:38.931 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:40:53.139 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:41:01.555 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:41:22.190 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:41:39.892 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:42:04.051 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:42:45.025 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:42:46.244 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:42:48.644 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:42:49.821 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:42:50.804 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:42:54.164 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:43:01.899 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:50:21.685 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:50:49.062 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:50:58.987 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:51:00.819 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:51:03.361 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:54:14.695 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:56:29.336 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:58:19.989 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:58:27.047 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:58:51.931 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:58:59.747 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:59:34.074 NotebookApp] Kernel interrupted: 0b3bc376-413d-4941-82e0-ee2235b6876b
+[I 13:59:49.442 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 13:59:49.819 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 14:00:23.791 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 14:00:58.612 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 14:01:35.463 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 14:01:38.844 NotebookApp] Starting buffering for 0b3bc376-413d-4941-82e0-ee2235b6876b:596c92e05b614c838f933b627cacdebe
+[I 14:01:39.663 NotebookApp] Kernel restarted: 0b3bc376-413d-4941-82e0-ee2235b6876b
+[I 14:01:41.251 NotebookApp] Adapting to protocol v5.1 for kernel 0b3bc376-413d-4941-82e0-ee2235b6876b
+[I 14:01:41.253 NotebookApp] Restoring connection for 0b3bc376-413d-4941-82e0-ee2235b6876b:596c92e05b614c838f933b627cacdebe
+[I 14:01:41.253 NotebookApp] Replaying 6 buffered messages
+[I 14:01:49.425 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 14:02:33.379 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 14:02:45.012 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 14:03:49.457 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 14:05:59.688 NotebookApp] Saving file at /content/2018-10-24 ML Pipeline Optimization with Bayesian Methods.ipynb
+[I 14:06:09.558 NotebookApp] Interrupted...
+[I 14:06:09.559 NotebookApp] Shutting down 1 kernel
+[I 14:06:10.264 NotebookApp] Kernel shutdown: 0b3bc376-413d-4941-82e0-ee2235b6876b

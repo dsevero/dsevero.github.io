@@ -4,7 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
-    <title>dsevero</title>
+    <title>dsevero - skopt</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
@@ -36,7 +36,7 @@
         </div>
         <div class="collapse navbar-collapse navbar-right">
           <ul class="nav navbar-nav">
-            <li><a href="https://daniel-severo.github.io/tags.html">tags</a></li>
+            <li class="active"active><a href="https://daniel-severo.github.io/tags.html">tags</a></li>
           </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -44,6 +44,11 @@
     </nav>
     <div class="container">
     <section id="content" class="content">
+      <ol class="breadcrumb">
+        <li><a href="https://daniel-severo.github.io"><div class="fa fa-lg fa-home"></div><span class="hidden-xs"> Home</span></a></li>
+        <li><a href="https://daniel-severo.github.io/tags.html"><div class="fa fa-lg fa-tags"></div> Tags <span class="badge">10</span></a></li>
+        <li class="active"><div class="fa fa-lg fa-tag"></div> skopt <span class="badge">1</span></li>
+      </ol>
       <div class="row">
         <div class="col-sm-3">
           <span class="text-muted">Wed 24 October 2018</span>
@@ -53,18 +58,6 @@
             <a href="https://daniel-severo.github.io/ml-pipeline-opt.html" rel="bookmark" title="Permalink to ML Pipeline Optimization with Bayesian Methods">ML Pipeline Optimization with Bayesian Methods</a>
             <br/>
             Improving the performance of an ML model via hyperparameter optimization is common amongst practitioners of the field. While objects such as sklearn.GridSearchCV provide easy interfaces for such tasks, commiting to sklearn's API and exploration strategy is not always possible. With skopt we can create a more flexible framework and, most importantly, reduce our optimization time by orders of magnitude with Bayesian regression.
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3">
-          <span class="text-muted">Mon 19 March 2018</span>
-        </div>
-        <div class="col-sm-9">
-          <p>
-            <a href="https://daniel-severo.github.io/big-data-analysis-with-dask.html" rel="bookmark" title="Permalink to Ad hoc Big Data Analysis with Dask">Ad hoc Big Data Analysis with Dask</a>
-            <br/>
-            Creating custom reports and machine learning models with pandas can be cumbersome with limited hardware resources (memory and CPU). Financial constraints can make spawning cloud instances to side-step this issue a problem, while adding the complexity of libraries such as Apache Spark isn't worth the trouble and staggers data exploration. How can we keep the simplicity and power of pandas, while extending it to be out-of-core and parallel?
           </p>
         </div>
       </div>
