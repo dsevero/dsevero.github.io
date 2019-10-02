@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2019-09-23T01:50:44-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication_types/4/</loc>
+    <lastmod>2019-09-23T01:50:44-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/work/ziggurat/</loc>
+    <lastmod>2019-09-23T01:50:44-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication_types/</loc>
+    <lastmod>2019-09-23T01:50:44-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/work/</loc>
+    <lastmod>2019-09-23T01:50:44-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/work/dask/</loc>
+    <lastmod>2018-03-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/admin/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/</loc>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>/opensource/dask/</loc>
+  </url>
+  
+  <url>
+    <loc>/opensource/dask-ml/</loc>
+  </url>
+  
+  <url>
+    <loc>/opensource/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+  </url>
+  
+</urlset>

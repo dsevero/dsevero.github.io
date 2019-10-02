@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Work | </title>
+    <link>/work/</link>
+      <atom:link href="/work/index.xml" rel="self" type="application/rss+xml" />
+    <description>Work</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 23 Sep 2019 01:50:44 -0300</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>Work</title>
+      <link>/work/</link>
+    </image>
+    
+    <item>
+      <title>A Report on the Ziggurat Method</title>
+      <link>/work/ziggurat/</link>
+      <pubDate>Mon, 23 Sep 2019 01:50:44 -0300</pubDate>
+      <guid>/work/ziggurat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ad hoc Big Data Analysis with Dask</title>
+      <link>/work/dask/</link>
+      <pubDate>Mon, 19 Mar 2018 00:00:00 +0000</pubDate>
+      <guid>/work/dask/</guid>
+      <description>
+
+&lt;p&gt;Creating custom reports and machine learning models with pandas can be cumbersome with limited hardware resources (memory and CPU). Financial constraints can make spawning cloud instances to side-step this issue a problem, while adding the complexity of libraries such as Apache Spark isn&amp;rsquo;t worth the trouble and staggers data exploration. &lt;strong&gt;How can we keep the simplicity and power of pandas, while extending it to be out-of-core and parallel?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Enter &lt;a href=&#34;https://dask.pydata.org/en/latest/&#34; target=&#34;_blank&#34;&gt;Dask&lt;/a&gt;: a flexible parallel computing library for analytic computing. With it we will create a linear regression model to predict &lt;a href=&#34;https://help.medium.com/hc/en-us/articles/214991667-Read-time&#34; target=&#34;_blank&#34;&gt;read time in Medium posts&lt;/a&gt; using a Kaggle dataset, while comparing the equivalent implementation with pandas.&lt;/p&gt;
+
+&lt;h3 id=&#34;1-kaggle-data&#34;&gt;1. Kaggle data&lt;/h3&gt;
+
+&lt;p&gt;We will be using the official kaggle api to automate our data fetching process.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Log on to kaggle and enter the &lt;a href=&#34;https://www.kaggle.com/c/how-good-is-your-medium-article&#34; target=&#34;_blank&#34;&gt;How good is your Medium article?&lt;/a&gt; competition.&lt;/li&gt;
+&lt;li&gt;Configure the official kaggle api &lt;a href=&#34;https://github.com/Kaggle/kaggle-api&#34; target=&#34;_blank&#34;&gt;following these steps&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For this tutorial we will need only 1 file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;kaggle competitions download -c how-good-is-your-medium-article -f train.json.gz
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The reason for decompressing will become clear later.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;gunzip -k ~/.kaggle/competitions/how-good-is-your-medium-article/train.json.gz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This sample file will help us speed up the analysis.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;head -n5 ~/.kaggle/competitions/how-good-is-your-medium-article/train.json &amp;gt; \
+         ~/.kaggle/competitions/how-good-is-your-medium-article/train-sample.json
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;2-exploration&#34;&gt;2. Exploration.&lt;/h3&gt;
+
+&lt;p&gt;Despite the extension being json our data is stored as &lt;a href=&#34;http://jsonlines.org/&#34; target=&#34;_blank&#34;&gt;jsonl&lt;/a&gt;. This means that each line of &lt;code&gt;train.json&lt;/code&gt; is a valid json file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;head -n1 ~/.kaggle/competitions/how-good-is-your-medium-article/train.json | jq &#39;del(.content)&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+  &amp;quot;_id&amp;quot;: &amp;quot;https://medium.com/policy/medium-terms-of-service-9db0094a1e0f&amp;quot;,
+  &amp;quot;_timestamp&amp;quot;: 1520035195.282891,
+  &amp;quot;_spider&amp;quot;: &amp;quot;medium&amp;quot;,
+  &amp;quot;url&amp;quot;: &amp;quot;https://medium.com/policy/medium-terms-of-service-9db0094a1e0f&amp;quot;,
+  &amp;quot;domain&amp;quot;: &amp;quot;medium.com&amp;quot;,
+  &amp;quot;published&amp;quot;: {
+    &amp;quot;$date&amp;quot;: &amp;quot;2012-08-13T22:54:53.510Z&amp;quot;
+  },
+  &amp;quot;title&amp;quot;: &amp;quot;Medium Terms of Service – Medium Policy – Medium&amp;quot;,
+  &amp;quot;author&amp;quot;: {
+    &amp;quot;name&amp;quot;: null,
+    &amp;quot;url&amp;quot;: &amp;quot;https://medium.com/@Medium&amp;quot;,
+    &amp;quot;twitter&amp;quot;: &amp;quot;@Medium&amp;quot;
+  },
+  &amp;quot;image_url&amp;quot;: null,
+  &amp;quot;tags&amp;quot;: [],
+  &amp;quot;link_tags&amp;quot;: {
+    &amp;quot;canonical&amp;quot;: &amp;quot;https://medium.com/policy/medium-terms-of-service-9db0094a1e0f&amp;quot;,
+    &amp;quot;publisher&amp;quot;: &amp;quot;https://plus.google.com/103654360130207659246&amp;quot;,
+    &amp;quot;author&amp;quot;: &amp;quot;https://medium.com/@Medium&amp;quot;,
+    &amp;quot;search&amp;quot;: &amp;quot;/osd.xml&amp;quot;,
+    &amp;quot;alternate&amp;quot;: &amp;quot;android-app://com.medium.reader/https/medium.com/p/9db0094a1e0f&amp;quot;,
+    &amp;quot;stylesheet&amp;quot;: &amp;quot;https://cdn-static-1.medium.com/_/fp/css/main-branding-base.Ch8g7KPCoGXbtKfJaVXo_w.css&amp;quot;,
+    &amp;quot;icon&amp;quot;: &amp;quot;https://cdn-static-1.medium.com/_/fp/icons/favicon-rebrand-medium.3Y6xpZ-0FSdWDnPM3hSBIA.ico&amp;quot;,
+    &amp;quot;apple-touch-icon&amp;quot;: &amp;quot;https://cdn-images-1.medium.com/fit/c/120/120/1*6_fgYnisCa9V21mymySIvA.png&amp;quot;,
+    &amp;quot;mask-icon&amp;quot;: &amp;quot;https://cdn-static-1.medium.com/_/fp/icons/monogram-mask.KPLCSFEZviQN0jQ7veN2RQ.svg&amp;quot;
+  },
+  &amp;quot;meta_tags&amp;quot;: {
+    &amp;quot;viewport&amp;quot;: &amp;quot;width=device-width, initial-scale=1&amp;quot;,
+    &amp;quot;title&amp;quot;: &amp;quot;Medium Terms of Service – Medium Policy – Medium&amp;quot;,
+    &amp;quot;referrer&amp;quot;: &amp;quot;unsafe-url&amp;quot;,
+    &amp;quot;description&amp;quot;: &amp;quot;These Terms of Service (“Terms”) are a contract between you and A Medium Corporation. They govern your use of Medium’s sites, services, mobile apps, products, and content (“Services”). By using…&amp;quot;,
+    &amp;quot;theme-color&amp;quot;: &amp;quot;#000000&amp;quot;,
+    &amp;quot;og:title&amp;quot;: &amp;quot;Medium Terms of Service – Medium Policy – Medium&amp;quot;,
+    &amp;quot;og:url&amp;quot;: &amp;quot;https://medium.com/policy/medium-terms-of-service-9db0094a1e0f&amp;quot;,
+    &amp;quot;fb:app_id&amp;quot;: &amp;quot;542599432471018&amp;quot;,
+    &amp;quot;og:description&amp;quot;: &amp;quot;These Terms of Service (“Terms”) are a contract between you and A Medium Corporation. They govern your use of Medium’s sites, services, mobile apps, products, and content (“Services”). By using…&amp;quot;,
+    &amp;quot;twitter:description&amp;quot;: &amp;quot;These Terms of Service (“Terms”) are a contract between you and A Medium Corporation. They govern your use of Medium’s sites, services, mobile apps, products, and content (“Services”). By using…&amp;quot;,
+    &amp;quot;author&amp;quot;: &amp;quot;Medium&amp;quot;,
+    &amp;quot;og:type&amp;quot;: &amp;quot;article&amp;quot;,
+    &amp;quot;twitter:card&amp;quot;: &amp;quot;summary&amp;quot;,
+    &amp;quot;article:publisher&amp;quot;: &amp;quot;https://www.facebook.com/medium&amp;quot;,
+    &amp;quot;article:author&amp;quot;: &amp;quot;https://medium.com/@Medium&amp;quot;,
+    &amp;quot;robots&amp;quot;: &amp;quot;index, follow&amp;quot;,
+    &amp;quot;article:published_time&amp;quot;: &amp;quot;2012-08-13T22:54:53.510Z&amp;quot;,
+    &amp;quot;twitter:creator&amp;quot;: &amp;quot;@Medium&amp;quot;,
+    &amp;quot;twitter:site&amp;quot;: &amp;quot;@Medium&amp;quot;,
+    &amp;quot;og:site_name&amp;quot;: &amp;quot;Medium&amp;quot;,
+    &amp;quot;twitter:label1&amp;quot;: &amp;quot;Reading time&amp;quot;,
+    &amp;quot;twitter:data1&amp;quot;: &amp;quot;5 min read&amp;quot;,
+    &amp;quot;twitter:app:name:iphone&amp;quot;: &amp;quot;Medium&amp;quot;,
+    &amp;quot;twitter:app:id:iphone&amp;quot;: &amp;quot;828256236&amp;quot;,
+    &amp;quot;twitter:app:url:iphone&amp;quot;: &amp;quot;medium://p/9db0094a1e0f&amp;quot;,
+    &amp;quot;al:ios:app_name&amp;quot;: &amp;quot;Medium&amp;quot;,
+    &amp;quot;al:ios:app_store_id&amp;quot;: &amp;quot;828256236&amp;quot;,
+    &amp;quot;al:android:package&amp;quot;: &amp;quot;com.medium.reader&amp;quot;,
+    &amp;quot;al:android:app_name&amp;quot;: &amp;quot;Medium&amp;quot;,
+    &amp;quot;al:ios:url&amp;quot;: &amp;quot;medium://p/9db0094a1e0f&amp;quot;,
+    &amp;quot;al:android:url&amp;quot;: &amp;quot;medium://p/9db0094a1e0f&amp;quot;,
+    &amp;quot;al:web:url&amp;quot;: &amp;quot;https://medium.com/policy/medium-terms-of-service-9db0094a1e0f&amp;quot;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I&amp;rsquo;ve ommited the &lt;code&gt;content&lt;/code&gt; field due to it&amp;rsquo;s huge verbosity. Our problem requires that we use the fields &lt;code&gt;published.$date&lt;/code&gt; and &lt;code&gt;meta_tags.twitter:data&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;head -n10 train.json | jq &#39;[.published[&amp;quot;$date&amp;quot;], .meta_tags[&amp;quot;twitter:data1&amp;quot;]] | @csv&#39; -r
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;2012-08-13T22:54:53.510Z&amp;quot;,&amp;quot;5 min read&amp;quot;
+&amp;quot;2015-08-03T07:44:50.331Z&amp;quot;,&amp;quot;7 min read&amp;quot;
+&amp;quot;2017-02-05T13:08:17.410Z&amp;quot;,&amp;quot;2 min read&amp;quot;
+&amp;quot;2017-05-06T08:16:30.776Z&amp;quot;,&amp;quot;3 min read&amp;quot;
+&amp;quot;2017-06-04T14:46:25.772Z&amp;quot;,&amp;quot;4 min read&amp;quot;
+&amp;quot;2017-04-02T16:21:15.171Z&amp;quot;,&amp;quot;7 min read&amp;quot;
+&amp;quot;2016-08-15T04:16:02.103Z&amp;quot;,&amp;quot;12 min read&amp;quot;
+&amp;quot;2015-01-14T21:31:07.568Z&amp;quot;,&amp;quot;5 min read&amp;quot;
+&amp;quot;2014-02-11T04:11:54.771Z&amp;quot;,&amp;quot;4 min read&amp;quot;
+&amp;quot;2015-10-25T02:58:05.551Z&amp;quot;,&amp;quot;8 min read&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;3-building-the-time-series-the-good-the-bad-and-the-ugly&#34;&gt;3. Building the time-series: The good, the bad and the ugly.&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;%matplotlib inline
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import json
+import pandas as pd
+import numpy as np
+import os
+import dask.bag as db
+
+from toolz.curried import get
+from typing import Dict
+
+HOME = os.environ[&#39;HOME&#39;]
+KAGGLE_DATASET_HOME = &#39;.kaggle/competitions/how-good-is-your-medium-article/&#39;
+train_file = f&#39;{HOME}/{KAGGLE_DATASET_HOME}/train.json&#39;
+train_sample_file = f&#39;{HOME}/{KAGGLE_DATASET_HOME}/train-sample.json&#39;
+MEGABYTES = 1024**2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;the-ugly&#34;&gt;The Ugly&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;read_json&lt;/code&gt; loads each json as a record, parsing each object beforehand.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;(
+    pd
+    .read_json(train_sample_file, lines=True)
+    [[&#39;published&#39;, &#39;meta_tags&#39;]]
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;published&lt;/th&gt;
+      &lt;th&gt;meta_tags&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;{&#39;$date&#39;: &#39;2012-08-13T22:54:53.510Z&#39;}&lt;/td&gt;
+      &lt;td&gt;{&#39;viewport&#39;: &#39;width=device-width, initial-scal...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;{&#39;$date&#39;: &#39;2015-08-03T07:44:50.331Z&#39;}&lt;/td&gt;
+      &lt;td&gt;{&#39;viewport&#39;: &#39;width=device-width, initial-scal...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;{&#39;$date&#39;: &#39;2017-02-05T13:08:17.410Z&#39;}&lt;/td&gt;
+      &lt;td&gt;{&#39;viewport&#39;: &#39;width=device-width, initial-scal...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;{&#39;$date&#39;: &#39;2017-05-06T08:16:30.776Z&#39;}&lt;/td&gt;
+      &lt;td&gt;{&#39;viewport&#39;: &#39;width=device-width, initial-scal...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;{&#39;$date&#39;: &#39;2017-06-04T14:46:25.772Z&#39;}&lt;/td&gt;
+      &lt;td&gt;{&#39;viewport&#39;: &#39;width=device-width, initial-scal...&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Both columns have object values. Our fields of interest can be extracted and assigned to a new column using the &lt;code&gt;assign&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;(
+    _
+    .assign(
+        published_timestamp = lambda df: df[&#39;published&#39;].apply(dict.get, args=(&#39;$date&#39;,)),
+        read_time = lambda df: df[&#39;meta_tags&#39;].apply(dict.get, args=(&#39;twitter:data1&#39;,)),
+    )
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;published&lt;/th&gt;
+      &lt;th&gt;meta_tags&lt;/th&gt;
+      &lt;th&gt;published_timestamp&lt;/th&gt;
+      &lt;th&gt;read_time&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;{&#39;$date&#39;: &#39;2012-08-13T22:54:53.510Z&#39;}&lt;/td&gt;
+      &lt;td&gt;{&#39;viewport&#39;: &#39;width=device-width, initial-scal...&lt;/td&gt;
+      &lt;td&gt;2012-08-13T22:54:53.510Z&lt;/td&gt;
+      &lt;td&gt;5 min read&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;{&#39;$date&#39;: &#39;2015-08-03T07:44:50.331Z&#39;}&lt;/td&gt;
+      &lt;td&gt;{&#39;viewport&#39;: &#39;width=device-width, initial-scal...&lt;/td&gt;
+      &lt;td&gt;2015-08-03T07:44:50.331Z&lt;/td&gt;
+      &lt;td&gt;7 min read&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;{&#39;$date&#39;: &#39;2017-02-05T13:08:17.410Z&#39;}&lt;/td&gt;
+      &lt;td&gt;{&#39;viewport&#39;: &#39;width=device-width, initial-scal...&lt;/td&gt;
+      &lt;td&gt;2017-02-05T13:08:17.410Z&lt;/td&gt;
+      &lt;td&gt;2 min read&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;{&#39;$date&#39;: &#39;2017-05-06T08:16:30.776Z&#39;}&lt;/td&gt;
+      &lt;td&gt;{&#39;viewport&#39;: &#39;width=device-width, initial-scal...&lt;/td&gt;
+      &lt;td&gt;2017-05-06T08:16:30.776Z&lt;/td&gt;
+      &lt;td&gt;3 min read&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;{&#39;$date&#39;: &#39;2017-06-04T14:46:25.772Z&#39;}&lt;/td&gt;
+      &lt;td&gt;{&#39;viewport&#39;: &#39;width=device-width, initial-scal...&lt;/td&gt;
+      &lt;td&gt;2017-06-04T14:46:25.772Z&lt;/td&gt;
+      &lt;td&gt;4 min read&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Extracting the time value in &lt;code&gt;read_time&lt;/code&gt; can be done with &lt;code&gt;pd.Series.str&lt;/code&gt; processing methods. When called, the equivalent function is applied to each value, hence &lt;code&gt;.str.split(&#39; &#39;).str[0]&lt;/code&gt; is equivalent to &lt;code&gt;&#39;5 min read&#39;.split(&#39; &#39;)[0]&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;astype&lt;/code&gt; casts our columns to the necessary dtypes.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;(
+    _
+    .assign(read_time = lambda df: df[&#39;read_time&#39;].str.split(&#39; &#39;).str[0])
+    .astype({
+        &#39;read_time&#39;: int,
+        &#39;published_timestamp&#39;: &#39;datetime64[ns]&#39;
+    })
+    .set_index(&#39;published_timestamp&#39;)
+    [&#39;read_time&#39;]
+    .to_frame()
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;read_time&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;published_timestamp&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2012-08-13 22:54:53.510&lt;/th&gt;
+      &lt;td&gt;5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2015-08-03 07:44:50.331&lt;/th&gt;
+      &lt;td&gt;7&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2017-02-05 13:08:17.410&lt;/th&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2017-05-06 08:16:30.776&lt;/th&gt;
+      &lt;td&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2017-06-04 14:46:25.772&lt;/th&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&#34;the-bad&#34;&gt;The Bad&lt;/h4&gt;
+
+&lt;p&gt;The issue with The Ugly solution is that &lt;code&gt;read_json&lt;/code&gt; loads the entire dataset into memory before slicing the necessary columns (&lt;code&gt;published&lt;/code&gt; and &lt;code&gt;meta_tags&lt;/code&gt;). Pre-processing our data with pure python consumes less RAM.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def make_datum(x):
+    return {
+        &#39;published_timestamp&#39;: x[&#39;published&#39;][&#39;$date&#39;],
+        &#39;read_time&#39;: x[&#39;meta_tags&#39;][&#39;twitter:data1&#39;]
+    }
+
+with open(train_sample_file, &#39;r&#39;) as f:    
+    bad_df = pd.DataFrame([make_datum(json.loads(x)) for x in f])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;bad_df
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;published_timestamp&lt;/th&gt;
+      &lt;th&gt;read_time&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;2012-08-13T22:54:53.510Z&lt;/td&gt;
+      &lt;td&gt;5 min read&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;2015-08-03T07:44:50.331Z&lt;/td&gt;
+      &lt;td&gt;7 min read&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;2017-02-05T13:08:17.410Z&lt;/td&gt;
+      &lt;td&gt;2 min read&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;2017-05-06T08:16:30.776Z&lt;/td&gt;
+      &lt;td&gt;3 min read&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;2017-06-04T14:46:25.772Z&lt;/td&gt;
+      &lt;td&gt;4 min read&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;(
+    _
+    .assign(read_time = lambda x: x[&#39;read_time&#39;].str.split(&#39; &#39;).str[0])
+    .astype({
+        &#39;published_timestamp&#39;: &#39;datetime64[ns]&#39;,
+        &#39;read_time&#39;: int
+    })
+    .set_index(&#39;published_timestamp&#39;)
+    [&#39;read_time&#39;]
+    .to_frame()
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;read_time&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;published_timestamp&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2012-08-13 22:54:53.510&lt;/th&gt;
+      &lt;td&gt;5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2015-08-03 07:44:50.331&lt;/th&gt;
+      &lt;td&gt;7&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2017-02-05 13:08:17.410&lt;/th&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2017-05-06 08:16:30.776&lt;/th&gt;
+      &lt;td&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2017-06-04 14:46:25.772&lt;/th&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&#34;the-good&#34;&gt;The Good&lt;/h4&gt;
+
+&lt;p&gt;Dask allows us to build lazy computational graphs. For example, &lt;code&gt;db.read_text&lt;/code&gt; will return a reference to each line of our jsonl file. After, &lt;code&gt;.map&lt;/code&gt; applies &lt;code&gt;json.loads&lt;/code&gt; to each line and &lt;code&gt;.to_dataframe&lt;/code&gt; casts the data to a dask DataFrame preserving &lt;strong&gt;only&lt;/strong&gt; the columns we explicitly tell it (in this case &lt;code&gt;published&lt;/code&gt; and &lt;code&gt;meta_tags&lt;/code&gt;). The rest of the code proceeds analogously with the previous implementations. The only difference is that &lt;strong&gt;dask won&amp;rsquo;t actually process anything until we call the &lt;code&gt;.compute&lt;/code&gt; method&lt;/strong&gt;, returning a pandas DataFrame. In other words, a dask DataFrame is a lazy version of a pandas DataFrame. The same is true for series.&lt;/p&gt;
+
+&lt;p&gt;Notice how we pass the &lt;code&gt;blocksize&lt;/code&gt; parameter as 100 MB. Since our file has 2 GB, dask creates 20 independent partitions. Most methods that are called (like &lt;code&gt;.map&lt;/code&gt; and &lt;code&gt;.assign&lt;/code&gt;) run in parallel, potentially speeding up computation significantly. Memory is also spared, since we only load the fields we need.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;dag = (
+    db
+    .read_text(train_file, blocksize=100*MEGABYTES)
+    .map(json.loads)
+    .to_dataframe({
+        &#39;published&#39;: object,
+        &#39;meta_tags&#39;: object
+    })
+    .assign(
+        published_timestamp=lambda df: df[&#39;published&#39;].apply(get(&#39;$date&#39;)),
+        read_time=lambda df: df[&#39;meta_tags&#39;].apply(get(&#39;twitter:data1&#39;)).str.split(&#39; &#39;).str[0],
+    )
+    .astype({
+        &#39;published_timestamp&#39;: &#39;datetime64[ns]&#39;,
+        &#39;read_time&#39;: int
+    })
+    [[&#39;published_timestamp&#39;, &#39;read_time&#39;]]
+)
+
+dag
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;&lt;strong&gt;Dask DataFrame Structure:&lt;/strong&gt;&lt;/div&gt;
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;published_timestamp&lt;/th&gt;
+      &lt;th&gt;read_time&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;npartitions=20&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;td&gt;datetime64[ns]&lt;/td&gt;
+      &lt;td&gt;int64&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;...&lt;/th&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div&gt;Dask Name: getitem, 120 tasks&lt;/div&gt;
+
+&lt;p&gt;Other methods like &lt;code&gt;.head(N)&lt;/code&gt; also force the dataframe to be computed. Since this call needs only the first &lt;code&gt;N&lt;/code&gt; rows, dask will partially solve the graph such that only those are processed.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;(
+    _
+    .head()
+    .set_index(&#39;published_timestamp&#39;)
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;read_time&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;published_timestamp&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2012-08-13 22:54:53.510&lt;/th&gt;
+      &lt;td&gt;5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2015-08-03 07:44:50.331&lt;/th&gt;
+      &lt;td&gt;7&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2017-02-05 13:08:17.410&lt;/th&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2017-05-06 08:16:30.776&lt;/th&gt;
+      &lt;td&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2017-06-04 14:46:25.772&lt;/th&gt;
+      &lt;td&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&#34;4-prediction&#34;&gt;4. Prediction&lt;/h1&gt;
+
+&lt;p&gt;Here we will implement simple linear regression for a single variable with intercept: $y = \alpha + \beta x$, the closed form solution is:&lt;/p&gt;
+
+&lt;p&gt;$$\beta = \frac{cov(x,y)}{var(x)}$$
+$$\alpha = \bar{y} - \beta \bar{x}$$&lt;/p&gt;
+
+&lt;p&gt;where $\bar{y}$ and $\bar{x}$ are the average values of the vectors $y$ and $x$, respectively.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def linear_regression(y: np.array, x: np.array, prefix=&#39;&#39;) -&amp;gt; Dict[str, float]:
+    M = np.cov(x, y)
+    beta = M[0,1]/M[0,0]
+    alpha = y.mean() - beta*x.mean()
+    return {
+        prefix + &#39;alpha&#39;: alpha, 
+        prefix + &#39;beta&#39;: beta
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;df = (
+    dag
+    .compute()
+    .set_index(&#39;published_timestamp&#39;)
+    [&#39;2015&#39;:]
+    [&#39;read_time&#39;]
+    .groupby(lambda i: pd.to_datetime(i.strftime(&#39;%Y/%m&#39;)))
+    .agg([&#39;mean&#39;, &#39;sum&#39;])
+)
+
+df.head()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;mean&lt;/th&gt;
+      &lt;th&gt;sum&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2015-01-01&lt;/th&gt;
+      &lt;td&gt;8.380952&lt;/td&gt;
+      &lt;td&gt;4928&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2015-02-01&lt;/th&gt;
+      &lt;td&gt;7.887564&lt;/td&gt;
+      &lt;td&gt;4630&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2015-03-01&lt;/th&gt;
+      &lt;td&gt;7.907840&lt;/td&gt;
+      &lt;td&gt;5749&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2015-04-01&lt;/th&gt;
+      &lt;td&gt;7.667149&lt;/td&gt;
+      &lt;td&gt;5298&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2015-05-01&lt;/th&gt;
+      &lt;td&gt;8.307506&lt;/td&gt;
+      &lt;td&gt;6862&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;df.plot(
+    style=[&#39;o--&#39;, &#39;og--&#39;], figsize=(12,6),
+    subplots=True, title=&#39;Medium read time&#39;, fontsize=12
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;./2018-03-19%20Ad%20hoc%20Big%20Data%20Analysis%20with%20Dask_32_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;df_pred = (
+    df
+    .assign(**linear_regression(df[&#39;mean&#39;], df.index.asi8, prefix=&#39;mean_&#39;))
+    .assign(**linear_regression(df[&#39;sum&#39;], df.index.asi8, prefix=&#39;sum_&#39;))
+    .assign(mean_pred = lambda z: z[&#39;mean_alpha&#39;] + z[&#39;mean_beta&#39;]*z.index.asi8)
+    .assign(sum_pred = lambda z: z[&#39;sum_alpha&#39;] + z[&#39;sum_beta&#39;]*z.index.asi8)
+)
+
+df_pred[[&#39;mean_alpha&#39;, &#39;mean_beta&#39;, &#39;sum_alpha&#39;, &#39;sum_beta&#39;, &#39;mean_pred&#39;, &#39;sum_pred&#39;]].head()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border=&#34;1&#34; class=&#34;dataframe&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;mean_alpha&lt;/th&gt;
+      &lt;th&gt;mean_beta&lt;/th&gt;
+      &lt;th&gt;sum_alpha&lt;/th&gt;
+      &lt;th&gt;sum_beta&lt;/th&gt;
+      &lt;th&gt;mean_pred&lt;/th&gt;
+      &lt;th&gt;sum_pred&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2015-01-01&lt;/th&gt;
+      &lt;td&gt;27.130799&lt;/td&gt;
+      &lt;td&gt;-1.351069e-17&lt;/td&gt;
+      &lt;td&gt;-407905.660648&lt;/td&gt;
+      &lt;td&gt;2.892460e-13&lt;/td&gt;
+      &lt;td&gt;7.944669&lt;/td&gt;
+      &lt;td&gt;2844.030846&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2015-02-01&lt;/th&gt;
+      &lt;td&gt;27.130799&lt;/td&gt;
+      &lt;td&gt;-1.351069e-17&lt;/td&gt;
+      &lt;td&gt;-407905.660648&lt;/td&gt;
+      &lt;td&gt;2.892460e-13&lt;/td&gt;
+      &lt;td&gt;7.908482&lt;/td&gt;
+      &lt;td&gt;3618.747348&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2015-03-01&lt;/th&gt;
+      &lt;td&gt;27.130799&lt;/td&gt;
+      &lt;td&gt;-1.351069e-17&lt;/td&gt;
+      &lt;td&gt;-407905.660648&lt;/td&gt;
+      &lt;td&gt;2.892460e-13&lt;/td&gt;
+      &lt;td&gt;7.875797&lt;/td&gt;
+      &lt;td&gt;4318.491286&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2015-04-01&lt;/th&gt;
+      &lt;td&gt;27.130799&lt;/td&gt;
+      &lt;td&gt;-1.351069e-17&lt;/td&gt;
+      &lt;td&gt;-407905.660648&lt;/td&gt;
+      &lt;td&gt;2.892460e-13&lt;/td&gt;
+      &lt;td&gt;7.839610&lt;/td&gt;
+      &lt;td&gt;5093.207789&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2015-05-01&lt;/th&gt;
+      &lt;td&gt;27.130799&lt;/td&gt;
+      &lt;td&gt;-1.351069e-17&lt;/td&gt;
+      &lt;td&gt;-407905.660648&lt;/td&gt;
+      &lt;td&gt;2.892460e-13&lt;/td&gt;
+      &lt;td&gt;7.804590&lt;/td&gt;
+      &lt;td&gt;5842.933436&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;(
+    df_pred
+    [[&#39;mean&#39;, &#39;mean_pred&#39;]]
+    .plot(figsize=(12,5), style=[&#39;o--&#39;, &#39;--&#39;])
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;./2018-03-19%20Ad%20hoc%20Big%20Data%20Analysis%20with%20Dask_34_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;(
+    df_pred
+    [[&#39;sum&#39;, &#39;sum_pred&#39;]]
+    .plot(figsize=(12,5), style=[&#39;o--&#39;, &#39;--&#39;])
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;./2018-03-19%20Ad%20hoc%20Big%20Data%20Analysis%20with%20Dask_35_0.png&#34; alt=&#34;png&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authors | </title>
+    <link>/authors/</link>
+      <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
+    <description>Authors</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>Authors</title>
+      <link>/authors/</link>
+    </image>
+    
+    <item>
+      <title></title>
+      <link>/authors/admin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/admin/</guid>
+      <description>&lt;p&gt;&lt;code&gt;{first name}souza{last name} at gmail dot com&lt;/code&gt;&lt;/p&gt;
+
+&lt;div style=&#34;text-align: justify&#34;&gt;
+I&#39;m a Researcher at &lt;a href=&#34;https://research.3778.care/&#34;&gt;3778 Healthcare&lt;/a&gt; working with Machine Learning for Healthcare. Previously, I was Head of Data Science at &lt;a href=&#34;https://www.linkedin.com/showcase/linx-impulse/&#34;&gt;Linx Impulse&lt;/a&gt; and a Researcher at the &lt;a href=&#34;https://www.certi.org.br/en/&#34;&gt;CERTI Foundation&lt;/a&gt; where I worked with Signal Processing and Embedded Systems.
+&lt;br&gt;
+&lt;br&gt;
+I&#39;m interested in learning more about the intersection between Probabilistic Graphical Models and Deep Learning for Neural Networks as well as their applications to Health and Privacy. I&#39;m also interested in how Machine Learning can be seen as an Information Theory problem.
+&lt;br&gt;
+&lt;br&gt;
+Originally, I am from Florianópolis, Brazil but I&#39;ve lived in New Jersey, Orlando, Toronto and São Paulo as well as other smaller cities in the south of Brazil. I enjoy reading, playing american football and &lt;a href=&#34;https://www.kerbalspaceprogram.com/&#34;&gt;KSP&lt;/a&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

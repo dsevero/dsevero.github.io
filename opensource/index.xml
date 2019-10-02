@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Opensources | </title>
+    <link>/opensource/</link>
+      <atom:link href="/opensource/index.xml" rel="self" type="application/rss+xml" />
+    <description>Opensources</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>Opensources</title>
+      <link>/opensource/</link>
+    </image>
+    
+    <item>
+      <title>Dask</title>
+      <link>/opensource/dask/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/opensource/dask/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dask-ML</title>
+      <link>/opensource/dask-ml/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/opensource/dask-ml/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
