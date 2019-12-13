@@ -5,12 +5,72 @@
     <link>/work/</link>
       <atom:link href="/work/index.xml" rel="self" type="application/rss+xml" />
     <description>Work</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 25 Oct 2019 14:33:30 -0300</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 12 Dec 2019 19:37:27 -0300</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Work</title>
       <link>/work/</link>
     </image>
+    
+    <item>
+      <title>Learning From Data, Problem 1.7</title>
+      <link>/work/lfd-p17/</link>
+      <pubDate>Thu, 12 Dec 2019 19:37:27 -0300</pubDate>
+      <guid>/work/lfd-p17/</guid>
+      <description>&lt;p&gt;A sample of heads and tails is created by tossing a coin a number of times independently. Assume we have a number of coins that generate different sa m ples independently. For a given coin, let the probability of heads (probability of error) be $\mu$. The probability of obtaining $k$ heads in $N$ tosses of this coin is given by the binomial distribution:&lt;/p&gt;
+
+&lt;p&gt;$$ P\left[ k \mid N, \mu \right] = {N\choose k} \mu^k \left(1 - \mu\right)^{N-k}$$&lt;/p&gt;
+
+&lt;p&gt;Remember that the training error $\nu$ is $\frac{k}{N}$&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;(a) Assume the sample size $(N)$ is $10$. If all the coins have $\mu = 0.05$ compute the probability that at least one coin will have $v = 0$ for the case of $1$ coin, $1,000$ coins, $1,000,000$ coins. Repeat for μ = 0.8.&lt;/p&gt;
+
+&lt;p&gt;Let $k_m$ be the number of heads for each coin. Since $\nu=0$ implies that $k=0$, we need to calculate&lt;/p&gt;
+
+&lt;p&gt;$$ P\left[ k_1=0 \vee k_2=0 \vee &amp;hellip; k_m=0 \right] = P\left[ \bigvee\limits_{m} k_m = 0 \right]$$&lt;/p&gt;
+
+&lt;p&gt;Here, we employ the common trick of computing the probability of the complement&lt;/p&gt;
+
+&lt;p&gt;$$P\left[ \bigvee\limits_{m} k_m = 0 \right] = 1 - P\left[ \bigwedge\limits_{m} k_m &amp;gt; 0 \right] = 1 - \prod\limits_{m}P\left[ k_m &amp;gt; 0 \right]$$&lt;/p&gt;
+
+&lt;p&gt;Summing over the values of $k$ and using the fact that $\sum\limits_{k=0}^N P\left[k\right] = 1$ we can compute $$P\left[ k_m &amp;gt; 0 \right] = \sum\limits_{i=1}^N P\left[k\right] = \sum\limits_{i=0}^N P\left[k\right] - P\left[0\right] = 1 - \left(1 - \mu\right)^N$$&lt;/p&gt;
+
+&lt;p&gt;Thus, resulting in&lt;/p&gt;
+
+&lt;p&gt;$$P\left[ \bigvee\limits_{m} k_m = 0 \right] = 1 - \left(  1 - \left(1 - \mu\right)^N \right)^M $$&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def prob_no_heads(μ, N)
+    return 1 - (1 - (1 - μ)**N)**M
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Learning From Data, Exercise 1.10</title>
+      <link>/work/lfd-e110/</link>
+      <pubDate>Wed, 11 Dec 2019 22:14:05 -0300</pubDate>
+      <guid>/work/lfd-e110/</guid>
+      <description>
+
+&lt;h1 id=&#34;statement&#34;&gt;Statement&lt;/h1&gt;
+
+&lt;p&gt;Here is an experiment that illustrates the difference between a single bin and multiple bins. Run a computer simulation for flipping 1,000 fair coins. Flip each coin independently 10 times. Let&amp;rsquo;s focus on 3 coins as follows: $c_1$ is the first coin flipped; $c_{rand}$ is a coin you choose at random; $c_{min}$ is the coin that had the minimum frequency of heads (pick the earlier one in case of a tie). $\nu_1$, $\nu_{rand}$ and $\nu_{min}$ be the fraction of heads you obtain for the respective three coins.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;(a) What is $\mu$ for the three coins selected?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;(b) Repeat this entire experiment a large number of times (e.g., 100,000 runs of the entire experiment) to get several instances of $\nu_1$, $\nu_{rand}$ and $\nu_{min}$ and plot the histograms of the distributions of $\nu_1$, $\nu_{rand}$ and $\nu_{min}$. Notice that which coins end up being $c_{rand}$ and $c_{min}$ may differ from one run to another.&lt;/p&gt;
+
+&lt;p&gt;(c) Using (b), plot estimates for $\mathbb{P}\left[\lvert \nu - \mu \rvert &amp;gt; \epsilon\right]$ as a function of $\epsilon$, together with the Hoeffding bound $2e^{-2\epsilon^2N}$ (on the same graph).&lt;/p&gt;
+
+&lt;p&gt;(d) Which coins obey the Hoeffding bound, and which ones do not? Explain why.&lt;/p&gt;
+
+&lt;p&gt;(e) Relate part (d) to the multiple bins in Figure 1.10.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Handling Time-series in Pandas and Numpy.</title>
