@@ -404,9 +404,22 @@ $$ P\left[ k \mid N, \mu \right] = {N\choose k} \mu^k \left(1 - \mu\right)^{N-k}
 
 <p>Here, we employ the common trick of computing the probability of the complement</p>
 
-<p>$$P\left[ \bigvee\limits_{m} k_m = 0 \right] = 1 - P\left[ \bigwedge\limits_{m} k_m &gt; 0 \right] = 1 - \prod\limits_{m}P\left[ k_m &gt; 0 \right]$$</p>
+<p>$$
+\begin{aligned}
+  P\left[ \bigvee\limits_{m} k_m = 0 \right] &amp;= 1 - P\left[ \bigwedge\limits_{m} k_m &gt; 0 \right] \\<br />
+                                                   &amp;= 1 - \prod\limits_{m}P\left[ k_m &gt; 0 \right]
+\end{aligned}
+$$</p>
 
-<p>Summing over the values of $k$ and using the fact that $\sum\limits_{k=0}^N P\left[k\right] = 1$ we can compute $$P\left[ k_m &gt; 0 \right] = \sum\limits_{i=1}^N P\left[k\right] = \sum\limits_{i=0}^N P\left[k\right] - P\left[0\right] = 1 - \left(1 - \mu\right)^N$$</p>
+<p>Summing over the values of $k$ and using the fact that $\sum\limits_{k=0}^N P\left[k\right] = 1$ we can compute</p>
+
+<p>$$
+\begin{aligned}
+  P\left[ k_m &gt; 0 \right] &amp;= \sum\limits_{i=1}^N P\left[k\right] \\<br />
+                             &amp;= \sum\limits_{i=0}^N P\left[k\right] - P\left[0\right] \\<br />
+                             &amp;= 1 - \left(1 - \mu\right)^N
+\end{aligned}
+$$</p>
 
 <p>Thus, resulting in</p>
 

@@ -33,9 +33,22 @@
 
 &lt;p&gt;Here, we employ the common trick of computing the probability of the complement&lt;/p&gt;
 
-&lt;p&gt;$$P\left[ \bigvee\limits_{m} k_m = 0 \right] = 1 - P\left[ \bigwedge\limits_{m} k_m &amp;gt; 0 \right] = 1 - \prod\limits_{m}P\left[ k_m &amp;gt; 0 \right]$$&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+  P\left[ \bigvee\limits_{m} k_m = 0 \right] &amp;amp;= 1 - P\left[ \bigwedge\limits_{m} k_m &amp;gt; 0 \right] \\&lt;br /&gt;
+                                                   &amp;amp;= 1 - \prod\limits_{m}P\left[ k_m &amp;gt; 0 \right]
+\end{aligned}
+$$&lt;/p&gt;
 
-&lt;p&gt;Summing over the values of $k$ and using the fact that $\sum\limits_{k=0}^N P\left[k\right] = 1$ we can compute $$P\left[ k_m &amp;gt; 0 \right] = \sum\limits_{i=1}^N P\left[k\right] = \sum\limits_{i=0}^N P\left[k\right] - P\left[0\right] = 1 - \left(1 - \mu\right)^N$$&lt;/p&gt;
+&lt;p&gt;Summing over the values of $k$ and using the fact that $\sum\limits_{k=0}^N P\left[k\right] = 1$ we can compute&lt;/p&gt;
+
+&lt;p&gt;$$
+\begin{aligned}
+  P\left[ k_m &amp;gt; 0 \right] &amp;amp;= \sum\limits_{i=1}^N P\left[k\right] \\&lt;br /&gt;
+                             &amp;amp;= \sum\limits_{i=0}^N P\left[k\right] - P\left[0\right] \\&lt;br /&gt;
+                             &amp;amp;= 1 - \left(1 - \mu\right)^N
+\end{aligned}
+$$&lt;/p&gt;
 
 &lt;p&gt;Thus, resulting in&lt;/p&gt;
 
