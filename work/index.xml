@@ -62,11 +62,56 @@ $$&lt;/p&gt;
 
 &lt;p&gt;$$P\left[ \bigvee\limits_{m} k_m = 0 \right] = 1 - \left(  1 - \left(1 - \mu\right)^N \right)^M $$&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def prob_no_heads(μ: &#39;probability of heads&#39;, 
-                  N: &#39;number of tosses&#39;, 
-                  M: &#39;number of coins&#39;):
+&lt;p&gt;Let&amp;rsquo;s take a look at this in python.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import matplotlib.pyplot as plt
+import pandas as pd
+
+def prob_zero_error(μ: &#39;true probability of error&#39;,
+                    M: &#39;number of hypotheses&#39;,
+                    N: &#39;number of data points&#39;):
     return 1 - (1 - (1 - μ)**N)**M
+
+d = [{&#39;μ&#39;: μ, 
+      &#39;M&#39;: M, 
+      &#39;p&#39;: prob_zero_error(μ, M, N=10)} 
+     for μ in [0.05, 0.8] 
+     for M in [1, 1_000, 1_000_000]]
+
+pd.DataFrame(d).pivot(&#39;M&#39;, &#39;μ&#39;, &#39;p&#39;).to_html()
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr style=&#34;text-align: right;&#34;&gt;
+      &lt;th&gt;μ&lt;/th&gt;
+      &lt;th&gt;0.05&lt;/th&gt;
+      &lt;th&gt;0.8&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;M&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;0.598737&lt;/td&gt;
+      &lt;td&gt;1.024000e-07&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1000&lt;/th&gt;
+      &lt;td&gt;1.000000&lt;/td&gt;
+      &lt;td&gt;1.023948e-04&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1000000&lt;/th&gt;
+      &lt;td&gt;1.000000&lt;/td&gt;
+      &lt;td&gt;9.733159e-02&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;hr /&gt;
 </description>
