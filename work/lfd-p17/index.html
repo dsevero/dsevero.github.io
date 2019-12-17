@@ -28,8 +28,7 @@
   
     
   
-  <meta name="description" content="A sample of heads and tails is created by tossing a coin a number of times independently. Assume we have a number of coins that generate different sa m ples independently. For a given coin, let the probability of heads (probability of error) be $\mu$. The probability of obtaining $k$ heads in $N$ tosses of this coin is given by the binomial distribution:
-$$ P\left[ k \mid N, \mu \right] = {N\choose k} \mu^k \left(1 - \mu\right)^{N-k}$$">
+  <meta name="description" content="A sample of heads and tails is created by tossing a coin a number of times independently. Assume we have a number of coins that generate different samples independently. For a given coin, let the probability of heads (probability of error) be $\mu$. The probability of obtaining $k$ heads in $N$ tosses of this coin is given by the binomial distribution: $$ P\left[ k \mid N, \mu \right] = {N\choose k} \mu^k \left(1 - \mu\right)^{N-k}$$ Remember that the training error $\nu$ is $\frac{k}{N}$">
 
   
   <link rel="alternate" hreflang="en-us" href="/work/lfd-p17/">
@@ -126,8 +125,7 @@ $$ P\left[ k \mid N, \mu \right] = {N\choose k} \mu^k \left(1 - \mu\right)^{N-k}
   <meta property="og:site_name" content="">
   <meta property="og:url" content="/work/lfd-p17/">
   <meta property="og:title" content="Learning From Data, Problem 1.7 | ">
-  <meta property="og:description" content="A sample of heads and tails is created by tossing a coin a number of times independently. Assume we have a number of coins that generate different sa m ples independently. For a given coin, let the probability of heads (probability of error) be $\mu$. The probability of obtaining $k$ heads in $N$ tosses of this coin is given by the binomial distribution:
-$$ P\left[ k \mid N, \mu \right] = {N\choose k} \mu^k \left(1 - \mu\right)^{N-k}$$"><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:description" content="A sample of heads and tails is created by tossing a coin a number of times independently. Assume we have a number of coins that generate different samples independently. For a given coin, let the probability of heads (probability of error) be $\mu$. The probability of obtaining $k$ heads in $N$ tosses of this coin is given by the binomial distribution: $$ P\left[ k \mid N, \mu \right] = {N\choose k} \mu^k \left(1 - \mu\right)^{N-k}$$ Remember that the training error $\nu$ is $\frac{k}{N}$"><meta property="og:image" content="/img/icon-192.png">
   <meta property="twitter:image" content="/img/icon-192.png"><meta property="og:locale" content="en-us">
   
     
@@ -388,15 +386,21 @@ $$ P\left[ k \mid N, \mu \right] = {N\choose k} \mu^k \left(1 - \mu\right)^{N-k}
   <div class="article-container">
 
     <div class="article-style">
-      <p>A sample of heads and tails is created by tossing a coin a number of times independently. Assume we have a number of coins that generate different sa m ples independently. For a given coin, let the probability of heads (probability of error) be $\mu$. The probability of obtaining $k$ heads in $N$ tosses of this coin is given by the binomial distribution:</p>
+      <blockquote>
+<p>A sample of heads and tails is created by tossing a coin a number of times independently. Assume we have a number of coins that generate different samples independently. For a given coin, let the probability of heads (probability of error) be $\mu$. The probability of obtaining $k$ heads in $N$ tosses of this coin is given by the binomial distribution:
+$$ P\left[ k \mid N, \mu \right] = {N\choose k} \mu^k \left(1 - \mu\right)^{N-k}$$
+Remember that the training error $\nu$ is $\frac{k}{N}$</p>
+</blockquote>
 
-<p>$$ P\left[ k \mid N, \mu \right] = {N\choose k} \mu^k \left(1 - \mu\right)^{N-k}$$</p>
+<p>The objective of this problem is to show that, given a large enough set of hypotheses $\mathcal{H}$, the probability of obtaining low training error on at least one $h \in \mathcal{H}$ is high if the data is i.i.d. Therefore, we should be careful when evaluating models even if we have followed the standard train, test and validation split procedure.</p>
 
-<p>Remember that the training error $\nu$ is $\frac{k}{N}$</p>
+<p>How does this translate to practice? Say you have a training dataset $\mathcal{D}$ and $M$ models $h_m \in \mathcal{H}$ that you wish to evaluate. You sample (with replacement) $N$ points $\mathbf{x}_{m,n} \in \mathcal{D}$ (e.g. mini-batch training) for each $h_m$ (i.e. a total of $NM$ points). What is the probability that at least one hypothesis will have low in-sample error?</p>
 
-<hr />
+<p>A coin flip represents a data point $\mathbf{x} \in \mathcal{X}$, therefore $N$ is the size of the dataset. Each coin is a hypothesis $h \in \mathcal{H}$, hence $M$ is the cardinality of $\mathcal{H}$. Following the bin analogy from the book, heads (numerically, $1$) represents a <em>miss</em> $h(\mathbf{x}) \neq f(\mathbf{x})$ where $f: \mathcal{X} \rightarrow \left\{\text{heads}, \text{tails}\right\}$ is the target function.</p>
 
+<blockquote>
 <p>(a) Assume the sample size $(N)$ is $10$. If all the coins have $\mu = 0.05$ compute the probability that at least one coin will have $v = 0$ for the case of $1$ coin, $1,000$ coins, $1,000,000$ coins. Repeat for μ = 0.8.</p>
+</blockquote>
 
 <p>Let $k_m$ be the number of heads for each coin. Since $\nu=0$ implies that $k=0$, we need to calculate</p>
 
@@ -410,6 +414,8 @@ $$ P\left[ k \mid N, \mu \right] = {N\choose k} \mu^k \left(1 - \mu\right)^{N-k}
                                                    &amp;= 1 - \prod\limits_{m}P\left[ k_m &gt; 0 \right]
 \end{aligned}
 $$</p>
+
+<p>Note that this step follows from the fact that $\mathbf{x}_{m,n}$ are independent. If we had used the same set of $N$ points for all $h_m$ (i.e. $\mathbf{x}_{m,n} \rightarrow \mathbf{x}_{n})$, the set of $k_m$ would not be independent, since looking at a specific $k_m$ would give you information regarding some other $k_{m^\prime}$.</p>
 
 <p>Summing over the values of $k$ and using the fact that $\sum\limits_{k=0}^N P\left[k\right] = 1$ we can compute</p>
 
@@ -425,7 +431,9 @@ $$</p>
 
 <p>$$P\left[ \bigvee\limits_{m} k_m = 0 \right] = 1 - \left(  1 - \left(1 - \mu\right)^N \right)^M $$</p>
 
-<pre><code class="language-python">def prob_no_heads(μ, N)
+<pre><code class="language-python">def prob_no_heads(μ: 'probability of heads', 
+                  N: 'number of tosses', 
+                  M: 'number of coins'):
     return 1 - (1 - (1 - μ)**N)**M
 </code></pre>
 
