@@ -60,7 +60,9 @@ $$&lt;/p&gt;
 
 &lt;p&gt;Thus, resulting in&lt;/p&gt;
 
-&lt;p&gt;$$P\left[ \bigvee\limits_{m} k_m = 0 \right] = 1 - \left(  1 - \left(1 - \mu\right)^N \right)^M $$&lt;/p&gt;
+&lt;p&gt;$$P\left[ \bigvee\limits_{m} k_m = 0 \right] = 1 - \left(  1 - \left(1 - \mu\right)^N \right)^M$$&lt;/p&gt;
+
+&lt;p&gt;The result is intuitive. For a single coin, if $\left(1 - \mu\right)^N$ is the probability that &lt;strong&gt;all&lt;/strong&gt; $N$ flips result in tails, the complement $1 - \left(1 - \mu\right)^N$ is the probability that &lt;strong&gt;at least one&lt;/strong&gt; flip will result in heads. For this to happen to &lt;strong&gt;all&lt;/strong&gt; $M$ coins, we get $\left(  1 - \left(1 - \mu\right)^N \right)^M$. Similarly, the probability of the complement is $1 - \left(  1 - \left(1 - \mu\right)^N \right)^M$ and can be interpretated as the probability that &lt;strong&gt;at least one&lt;/strong&gt; coin out of $M$ will have &lt;strong&gt;at least one&lt;/strong&gt; flip out of $N$ resulting in heads.&lt;/p&gt;
 
 &lt;p&gt;Let&amp;rsquo;s take a look at this in python.&lt;/p&gt;
 
@@ -112,6 +114,14 @@ pd.DataFrame(d).pivot(&#39;M&#39;, &#39;μ&#39;, &#39;p&#39;).to_html()
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;(b) For the case $N = 6$ and $2$ coins with $\mu = 0.5$ for both coins, plot the probability $$P[ \max\limits_i \mid \nu_i - \mu_i \mid &amp;gt; \epsilon ]$$ for $\epsilon$ in the range $[0, 1]$ (the max is over coins). On the same plot show the bound that would be obtained using the Hoeffding Inequality. Remember that for a single coin, the Hoeffding bound is $$P[\mid \nu- \mu \mid &amp;gt; \epsilon ] \leq 2e^{-2N\epsilon^2}$$&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!---
+&gt; [Hint: Use $P\[A\\space\\text{or}\\space B\] = P\[A\] + P\[B\] \\space \\space \\space \\space P\[A\\space\\text{and}\\space B\] = P\[A\] + P\[B\] - P\[A\] P\[B\]$, where the last equality follows by independence, to evaluate $P\[\\max \\dots \]]$.
+--&gt;
 
 &lt;hr /&gt;
 </description>
