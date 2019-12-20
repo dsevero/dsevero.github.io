@@ -188,29 +188,6 @@ plt.xlabel(&#39;$\epsilon$&#39;, fontsize=20);
     </item>
     
     <item>
-      <title>Learning From Data, Exercise 1.10</title>
-      <link>/blog/lfd-e110/</link>
-      <pubDate>Wed, 11 Dec 2019 22:14:05 -0300</pubDate>
-      <guid>/blog/lfd-e110/</guid>
-      <description>
-
-&lt;h1 id=&#34;statement&#34;&gt;Statement&lt;/h1&gt;
-
-&lt;p&gt;Here is an experiment that illustrates the difference between a single bin and multiple bins. Run a computer simulation for flipping 1,000 fair coins. Flip each coin independently 10 times. Let&amp;rsquo;s focus on 3 coins as follows: $c_1$ is the first coin flipped; $c_{rand}$ is a coin you choose at random; $c_{min}$ is the coin that had the minimum frequency of heads (pick the earlier one in case of a tie). $\nu_1$, $\nu_{rand}$ and $\nu_{min}$ be the fraction of heads you obtain for the respective three coins.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;(a) What is $\mu$ for the three coins selected?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;(b) Repeat this entire experiment a large number of times (e.g., 100,000 runs of the entire experiment) to get several instances of $\nu_1$, $\nu_{rand}$ and $\nu_{min}$ and plot the histograms of the distributions of $\nu_1$, $\nu_{rand}$ and $\nu_{min}$. Notice that which coins end up being $c_{rand}$ and $c_{min}$ may differ from one run to another.&lt;/p&gt;
-
-&lt;p&gt;(c) Using (b), plot estimates for $\mathbb{P}\left[\lvert \nu - \mu \rvert &amp;gt; \epsilon\right]$ as a function of $\epsilon$, together with the Hoeffding bound $2e^{-2\epsilon^2N}$ (on the same graph).&lt;/p&gt;
-
-&lt;p&gt;(d) Which coins obey the Hoeffding bound, and which ones do not? Explain why.&lt;/p&gt;
-
-&lt;p&gt;(e) Relate part (d) to the multiple bins in Figure 1.10.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Handling Time-series in Pandas and Numpy.</title>
       <link>/blog/pandas/</link>
       <pubDate>Fri, 25 Oct 2019 14:33:30 -0300</pubDate>
