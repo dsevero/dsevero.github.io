@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Daniel Severo">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Here we will show you how to properly use the Python Data Analysis Library (pandas) and numpy. The agenda is:
+ How to load data from csv files The basic pandas objects: DataFrames and Series Handling Time-Series data Resampling (optional) From pandas to numpy Simple Linear Regression  Consider leaving a Star if this helps you.
+The following ipython magic (this is literally the name) will enable plots made by matplotlib to be rendered inside this notebook.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/blog/pandas/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin="anonymous">
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.5ac49d52d669340d29cb50b00bb7867f.css">
+
+  
+    
+    
+    
+    
+      
+    
+    
+    
+    <link rel="stylesheet" href="/css/academic.bd654c477505d2f4707dc3fd3a8e905d.css">
+  
+
+  
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/blog/pandas/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@_dsevero">
+  <meta property="twitter:creator" content="@_dsevero">
+  
+  <meta property="og:site_name" content="">
+  <meta property="og:url" content="/blog/pandas/">
+  <meta property="og:title" content="Handling Time-series in Pandas and Numpy. | ">
+  <meta property="og:description" content="Here we will show you how to properly use the Python Data Analysis Library (pandas) and numpy. The agenda is:
+ How to load data from csv files The basic pandas objects: DataFrames and Series Handling Time-Series data Resampling (optional) From pandas to numpy Simple Linear Regression  Consider leaving a Star if this helps you.
+The following ipython magic (this is literally the name) will enable plots made by matplotlib to be rendered inside this notebook."><meta property="og:image" content="/img/icon-192.png">
+  <meta property="twitter:image" content="/img/icon-192.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2019-10-25T14:33:30-03:00">
+    
+    <meta property="article:modified_time" content="2019-10-25T14:33:30-03:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+
+  <title>Handling Time-series in Pandas and Numpy. | </title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/"></a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/reading-list"><span>Reading List</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Handling Time-series in Pandas and Numpy.</h1>
+
+  
+
+  
+    
+
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Oct 25, 2019
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+
+  
+    
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<p>Here we will show you how to properly use the Python Data Analysis Library (pandas) and numpy. The agenda is:</p>
+
+<ol>
+<li>How to load data from csv files</li>
+<li>The basic pandas objects: DataFrames and Series</li>
+<li>Handling Time-Series data</li>
+<li>Resampling (optional)</li>
+<li>From pandas to numpy</li>
+<li>Simple Linear Regression</li>
+</ol>
+
+<p>Consider leaving a <span style="text-shadow: none;"><a class="github-button" href="https://github.com/dsevero/dsevero.com" data-icon="octicon-star" data-size="small" data-show-count="true" aria-label="Star this on GitHub">Star</a><script async defer src="https://buttons.github.io/buttons.js"></script></span> if this helps you.</p>
+
+<p>The following ipython magic (this is literally the name) will enable plots made by matplotlib to be rendered inside this notebook.</p>
+
+<pre><code class="language-python">%matplotlib inline 
+</code></pre>
+
+<pre><code class="language-python">import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+plt.style.use('ggplot') # changes the plotting style
+</code></pre>
+
+<h1 id="1-load-data">1. Load data</h1>
+
+<p>The file <code>data/monthly-milk-production-pounds-p.csv</code> contains the average monthly milk production, in pounds, of cows from Jan/1962 to Dec/1975. More information can be found here: <a href="https://datamarket.com/data/set/22ox/monthly-milk-production-pounds-per-cow-jan-62-dec-75" target="_blank">https://datamarket.com/data/set/22ox/monthly-milk-production-pounds-per-cow-jan-62-dec-75</a></p>
+
+<p>First, we must load this data with pandas for further analysis.</p>
+
+<pre><code class="language-python">df = pd.read_csv('data/monthly-milk-production-pounds-p.csv')
+</code></pre>
+
+<pre><code class="language-python">df.head()
+</code></pre>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Month</th>
+      <th>Monthly milk production: pounds per cow. Jan 62 ? Dec 75</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1962-01</td>
+      <td>589</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1962-02</td>
+      <td>561</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1962-03</td>
+      <td>640</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1962-04</td>
+      <td>656</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1962-05</td>
+      <td>727</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<pre><code class="language-python">type(df)
+</code></pre>
+
+<pre><code>pandas.core.frame.DataFrame
+</code></pre>
+
+<p>Calling <code>.head()</code> truncates the dataset to the first 5 lines (plus the header). Notice that the type of <code>df</code> is a pandas DataFrame. This is similar to an Excel table, but much more powerful. Since pandas is a widely used library, Jupyter automatically shows the dataframe as a formatted HTML.</p>
+
+<h1 id="2-the-basic-pandas-objects-dataframes-and-series">2. The basic pandas objects: DataFrames and Series</h1>
+
+<p>Let&rsquo;s take a look at each column individually.</p>
+
+<pre><code class="language-python">df['Month'].head()
+</code></pre>
+
+<pre><code>0    1962-01
+1    1962-02
+2    1962-03
+3    1962-04
+4    1962-05
+Name: Month, dtype: object
+</code></pre>
+
+<pre><code class="language-python">df['Monthly milk production: pounds per cow. Jan 62 ? Dec 75'].head()
+</code></pre>
+
+<pre><code>0    589
+1    561
+2    640
+3    656
+4    727
+Name: Monthly milk production: pounds per cow. Jan 62 ? Dec 75, dtype: int64
+</code></pre>
+
+<pre><code class="language-python">type(df['Month'])
+</code></pre>
+
+<pre><code>pandas.core.series.Series
+</code></pre>
+
+<p>A pandas Series is the second basic type. In a nutshell, Series are made up of values and an index. For both columns, the index can be seen printed on the far left and the elements are <code>0, 1, 2, 3,</code> and <code>4</code>. The values are the points of interest (e.g. dates for the <code>Month</code> column and <code>589, 561, 640, 656</code> and <code>727</code> for the other).</p>
+
+<p>A pandas DataFrame is made up of multiple Series, each representing a column, and an index.</p>
+
+<p>The columns of a DataFrame can be accessed through slicing (as previously shown). Since the names are hard to write, we can change them like so:</p>
+
+<pre><code class="language-python">df.columns = ['month', 'milk']
+</code></pre>
+
+<h1 id="3-handling-time-series-data">3. Handling Time-Series data</h1>
+
+<pre><code class="language-python">df.head()
+</code></pre>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>month</th>
+      <th>milk</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1962-01</td>
+      <td>589</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1962-02</td>
+      <td>561</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1962-03</td>
+      <td>640</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1962-04</td>
+      <td>656</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1962-05</td>
+      <td>727</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<pre><code class="language-python">df.info()
+</code></pre>
+
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 168 entries, 0 to 167
+Data columns (total 2 columns):
+month    168 non-null object
+milk     168 non-null int64
+dtypes: int64(1), object(1)
+memory usage: 2.7+ KB
+</code></pre>
+
+<p>The <code>.info()</code> function gives us some insight on which data-types are being used to represent the values of each column. Notice how the <code>milk</code> column is of type <code>int64</code>. Hence, we can perform arithmetic and plotting operations like so:</p>
+
+<pre><code class="language-python">df['milk'].plot();
+</code></pre>
+
+<p><img src="./tutorial_21_0.png" alt="png" /></p>
+
+<pre><code class="language-python">df['milk'].mean()
+</code></pre>
+
+<pre><code>754.7083333333334
+</code></pre>
+
+<pre><code class="language-python">df['milk'].var()
+</code></pre>
+
+<pre><code>10445.764720558882
+</code></pre>
+
+<p>The <code>month</code> column is of type <code>object</code>. This is python&rsquo;s way of telling you that this column is of mixed type. Hence, it is a little bit trickier to manipulate. Due to the internals of pandas, a Series that has all values of type <code>str</code> will still be refered to as of type <code>object</code>. This is the case of the <code>month</code> column.</p>
+
+<pre><code class="language-python">df['month'].apply(type).unique()
+</code></pre>
+
+<pre><code>array([&lt;class 'str'&gt;], dtype=object)
+</code></pre>
+
+<p>The <code>.apply</code> function will apply the argument function (in this case <code>type</code>) to every single element of the series. <code>unique</code> will return to us the unique values of the series (i.e. it will drop all duplicates). Calling both together let&rsquo;s us see what data-types are present in the Series. As can be seen, all are of type <code>str</code>.</p>
+
+<p>pandas has a built-in timestamp data-type. It works like so.</p>
+
+<pre><code class="language-python">pd.Timestamp('now')
+</code></pre>
+
+<pre><code>Timestamp('2019-10-25 14:42:25.259875')
+</code></pre>
+
+<pre><code class="language-python">pd.Timestamp('1992-03-23')
+</code></pre>
+
+<pre><code>Timestamp('1992-03-23 00:00:00')
+</code></pre>
+
+<pre><code class="language-python">pd.Timestamp('1992-03-23 04')
+</code></pre>
+
+<pre><code>Timestamp('1992-03-23 04:00:00')
+</code></pre>
+
+<p>Internally, pandas stores a date as the amount of time that has passed since <code>1970-01-01 00:00:00</code>. This date is represented as <code>pd.Timestamp(0)</code>. This is useful for linear regression, since it allows us to convert timestamp data to integers without loss of reference.</p>
+
+<pre><code class="language-python">pd.Timestamp(0)
+</code></pre>
+
+<pre><code>Timestamp('1970-01-01 00:00:00')
+</code></pre>
+
+<pre><code class="language-python">pd.Timestamp('now') &gt; pd.Timestamp('1992-03-23 04')
+</code></pre>
+
+<pre><code>True
+</code></pre>
+
+<p>We can transform the <code>month</code> column into <code>pd.Timestamp</code> values with <code>pd.to_datetime</code> and set it as the index of a new time-series.</p>
+
+<pre><code class="language-python">df['month'] = pd.to_datetime(df['month'])
+</code></pre>
+
+<pre><code class="language-python">s = df.set_index('month')['milk']
+</code></pre>
+
+<pre><code class="language-python">s.head()
+</code></pre>
+
+<pre><code>month
+1962-01-01    589
+1962-02-01    561
+1962-03-01    640
+1962-04-01    656
+1962-05-01    727
+Name: milk, dtype: int64
+</code></pre>
+
+<pre><code class="language-python">s.index[0]
+</code></pre>
+
+<pre><code>Timestamp('1962-01-01 00:00:00')
+</code></pre>
+
+<pre><code class="language-python">s.values[0]
+</code></pre>
+
+<pre><code>589
+</code></pre>
+
+<pre><code class="language-python">s.plot();
+</code></pre>
+
+<p><img src="./tutorial_40_0.png" alt="png" /></p>
+
+<p>Notice how the x-axis of the above plot differs from the first one of this same section, since the index of <code>s</code> is a timestamp-like-type. The timestamp index of <code>s</code> is also manipulatable. Time-aware slices are also now available.</p>
+
+<pre><code class="language-python">s.index.min()
+</code></pre>
+
+<pre><code>Timestamp('1962-01-01 00:00:00')
+</code></pre>
+
+<pre><code class="language-python">s.index.max()
+</code></pre>
+
+<pre><code>Timestamp('1975-12-01 00:00:00')
+</code></pre>
+
+<pre><code class="language-python">s['1970'].plot();
+</code></pre>
+
+<p><img src="./tutorial_44_0.png" alt="png" /></p>
+
+<pre><code class="language-python">s['1970':'1972'].plot(style='o--');
+</code></pre>
+
+<p><img src="./tutorial_45_0.png" alt="png" /></p>
+
+<h1 id="4-resampling-optional">4. Resampling (optional)</h1>
+
+<p>Looking at the plots it is pretty clear that the data trend is rising, but it fluctuates yearly reaching a local peak around June. How can we calculate the yearly mean as an attempt to smooth out the data? Luckily, <code>s</code> is a time-series (i.e. has a time index and numeric values), we can use the <code>.resample</code> function. This will allow us to group the data chronologically, given that we supply an aggregating function (i.e. <code>mean</code>, <code>std</code>, <code>var</code>, <code>median</code>, etc).</p>
+
+<pre><code class="language-python">s.resample('12M').mean().plot(style='o--');
+</code></pre>
+
+<p><img src="./tutorial_48_0.png" alt="png" /></p>
+
+<pre><code class="language-python">s.resample('6M').mean().plot(style='o--');
+</code></pre>
+
+<p><img src="./tutorial_49_0.png" alt="png" /></p>
+
+<h1 id="5-from-pandas-to-numpy">5. From pandas to numpy</h1>
+
+<p>Numpy provides vector data-types and operations making it easy to work with linear algebra. In fact, this works so well, that pandas is actually built on top of numpy. The values of a pandas Series, and the values of the index are numpy ndarrays.</p>
+
+<pre><code class="language-python">type(s.values)
+</code></pre>
+
+<pre><code>numpy.ndarray
+</code></pre>
+
+<pre><code class="language-python">type(s.index.values)
+</code></pre>
+
+<pre><code>numpy.ndarray
+</code></pre>
+
+<pre><code class="language-python">s.head().values
+</code></pre>
+
+<pre><code>array([589, 561, 640, 656, 727])
+</code></pre>
+
+<pre><code class="language-python">s.head().index.values
+</code></pre>
+
+<pre><code>array(['1962-01-01T00:00:00.000000000', '1962-02-01T00:00:00.000000000',
+       '1962-03-01T00:00:00.000000000', '1962-04-01T00:00:00.000000000',
+       '1962-05-01T00:00:00.000000000'], dtype='datetime64[ns]')
+</code></pre>
+
+<pre><code class="language-python">s.values.dot(s.values) # dot product
+</code></pre>
+
+<pre><code>97434667
+</code></pre>
+
+<pre><code class="language-python">s.values + s.values
+</code></pre>
+
+<pre><code>array([1178, 1122, 1280, 1312, 1454, 1394, 1280, 1198, 1136, 1154, 1106,
+       1164, 1200, 1132, 1306, 1346, 1484, 1432, 1320, 1234, 1166, 1174,
+       1130, 1196, 1256, 1236, 1376, 1410, 1540, 1472, 1356, 1278, 1208,
+       1222, 1188, 1268, 1316, 1244, 1418, 1444, 1564, 1512, 1404, 1306,
+       1230, 1242, 1204, 1270, 1354, 1270, 1472, 1510, 1622, 1596, 1470,
+       1394, 1322, 1334, 1290, 1376, 1426, 1334, 1524, 1568, 1674, 1634,
+       1534, 1444, 1362, 1374, 1320, 1396, 1434, 1392, 1550, 1592, 1716,
+       1652, 1566, 1480, 1402, 1412, 1354, 1422, 1468, 1380, 1570, 1610,
+       1742, 1690, 1602, 1528, 1450, 1446, 1380, 1468, 1500, 1414, 1614,
+       1648, 1772, 1718, 1638, 1566, 1480, 1494, 1422, 1502, 1608, 1512,
+       1720, 1756, 1884, 1826, 1738, 1668, 1580, 1600, 1526, 1600, 1652,
+       1598, 1780, 1800, 1922, 1870, 1788, 1710, 1618, 1620, 1532, 1610,
+       1642, 1546, 1766, 1796, 1914, 1848, 1762, 1674, 1568, 1582, 1520,
+       1604, 1656, 1556, 1778, 1804, 1938, 1894, 1816, 1734, 1630, 1624,
+       1546, 1626, 1668, 1564, 1784, 1806, 1932, 1874, 1792, 1716, 1634,
+       1654, 1594, 1686])
+</code></pre>
+
+<pre><code class="language-python">s.values * s.values
+</code></pre>
+
+<pre><code>array([346921, 314721, 409600, 430336, 528529, 485809, 409600, 358801,
+       322624, 332929, 305809, 338724, 360000, 320356, 426409, 452929,
+       550564, 512656, 435600, 380689, 339889, 344569, 319225, 357604,
+       394384, 381924, 473344, 497025, 592900, 541696, 459684, 408321,
+       364816, 373321, 352836, 401956, 432964, 386884, 502681, 521284,
+       611524, 571536, 492804, 426409, 378225, 385641, 362404, 403225,
+       458329, 403225, 541696, 570025, 657721, 636804, 540225, 485809,
+       436921, 444889, 416025, 473344, 508369, 444889, 580644, 614656,
+       700569, 667489, 588289, 521284, 463761, 471969, 435600, 487204,
+       514089, 484416, 600625, 633616, 736164, 682276, 613089, 547600,
+       491401, 498436, 458329, 505521, 538756, 476100, 616225, 648025,
+       758641, 714025, 641601, 583696, 525625, 522729, 476100, 538756,
+       562500, 499849, 651249, 678976, 784996, 737881, 670761, 613089,
+       547600, 558009, 505521, 564001, 646416, 571536, 739600, 770884,
+       887364, 833569, 755161, 695556, 624100, 640000, 582169, 640000,
+       682276, 638401, 792100, 810000, 923521, 874225, 799236, 731025,
+       654481, 656100, 586756, 648025, 674041, 597529, 779689, 806404,
+       915849, 853776, 776161, 700569, 614656, 625681, 577600, 643204,
+       685584, 605284, 790321, 813604, 938961, 896809, 824464, 751689,
+       664225, 659344, 597529, 660969, 695556, 611524, 795664, 815409,
+       933156, 877969, 802816, 736164, 667489, 683929, 635209, 710649])
+</code></pre>
+
+<p>The above examples are just for show. You can do the same thing directly with pandas Series objects and it will use numpy behind the scenes.</p>
+
+<pre><code class="language-python">s.dot(s) == s.values.dot(s.values)
+</code></pre>
+
+<pre><code>True
+</code></pre>
+
+<h1 id="6-simple-linear-regression">6. Simple Linear Regression.</h1>
+
+<p>Side note: python accepts non-ascii type characters. So it is possible to use greek letters as variables. Try this: type in <code>\alpha</code> and press the TAB key in any cell.</p>
+
+<pre><code class="language-python">α = 1
+β = 2
+α + β
+</code></pre>
+
+<pre><code>3
+</code></pre>
+
+<p>Here we will implement a simple linear regression to illustrate the full usage of pandas with numpy. For a single variable with intercept: $y = \alpha + \beta x$, the closed form solution is:</p>
+
+<p>$$\beta = \frac{cov(x,y)}{var(x)}$$
+$$\alpha = \bar{y} - \beta \bar{x}$$</p>
+
+<p>where $\bar{y}$ and $\bar{x}$ are the average values of the vectors $y$ and $x$, respectively.</p>
+
+<pre><code class="language-python">y = s
+x = (s.index - pd.Timestamp(0)).days.values
+</code></pre>
+
+<pre><code class="language-python">β = np.cov([x,y])[0][1]/x.var()
+α = y.mean() - β*x.mean()
+</code></pre>
+
+<pre><code class="language-python">α
+</code></pre>
+
+<pre><code>776.0355721497116
+</code></pre>
+
+<pre><code class="language-python">β
+</code></pre>
+
+<pre><code>0.05592981987998409
+</code></pre>
+
+<pre><code class="language-python">(
+    s
+    .to_frame() # transforms s back into a DataFrame
+    .assign(regression = α + β*x) # creates a new column called regression with values α + β*x
+    .plot() # plots all columns
+);
+</code></pre>
+
+<p><img src="./tutorial_69_0.png" alt="png" /></p>
+
+<p>The above programming style is called method chaining, and is highly recommended for clarity.</p>
+
+    </div>
+
+    
+
+
+    
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card">
+    
+      <img class="portrait mr-3" src="https://s.gravatar.com/avatar/5f4137714834378cbeb267932bb101c3?s=200')" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/">Daniel Severo</a></h5>
+      <h6 class="card-subtitle">Machine Learning Researcher</h6>
+      <p class="card-text">Trying to teach machines things I don&rsquo;t know.</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://twitter.com/_dsevero" target="_blank" rel="noopener">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://github.com/dsevero" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://www.linkedin.com/in/danielsevero" target="_blank" rel="noopener">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://scholar.google.fr/citations?user=5bQjLz4AAAAJ" target="_blank" rel="noopener">
+              <i class="ai ai-google-scholar"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="/files/cv.pdf" >
+              <i class="ai ai-cv"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+      
+      
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.0.0/mermaid.min.js" integrity="sha256-0w92bcB21IY5+rGI84MGj52jNfHNbXVeQLrZ0CGdjNY=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/python.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.130521ecfc6f534c52c158217bbff718.js"></script>
+
+    
+
+
+
+
+
+
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

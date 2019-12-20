@@ -28,10 +28,14 @@
   
     
   
-  <meta name="description" content="Scalable Machine Learn with Dask">
+  <meta name="description" content="This post is a solution to the problem taken from Abu-Mostafa, Yaser S., Malik Magdon-Ismail, and Hsuan-Tien Lin. Learning from data. Vol. 4. New York, NY, USA:: AMLBook, 2012..
+Quoted text refers to the original problem statement, verbatim.
+For more solutions, see dsevero.com/blog.
+Consider leaving a Star if this helps you.
+ A sample of heads and tails is created by tossing a coin a number of times independently. Assume we have a number of coins that generate different samples independently.">
 
   
-  <link rel="alternate" hreflang="en-us" href="/opensource/dask-ml/">
+  <link rel="alternate" hreflang="en-us" href="/blog/lfd-p17/">
 
   
 
@@ -107,7 +111,7 @@
   <link rel="icon" type="image/png" href="/img/icon-32.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="/opensource/dask-ml/">
+  <link rel="canonical" href="/blog/lfd-p17/">
 
   
   
@@ -123,13 +127,19 @@
   <meta property="twitter:creator" content="@_dsevero">
   
   <meta property="og:site_name" content="">
-  <meta property="og:url" content="/opensource/dask-ml/">
-  <meta property="og:title" content="Dask-ML | ">
-  <meta property="og:description" content="Scalable Machine Learn with Dask"><meta property="og:image" content="/img/icon-192.png">
+  <meta property="og:url" content="/blog/lfd-p17/">
+  <meta property="og:title" content="Learning From Data, Problem 1.7 | ">
+  <meta property="og:description" content="This post is a solution to the problem taken from Abu-Mostafa, Yaser S., Malik Magdon-Ismail, and Hsuan-Tien Lin. Learning from data. Vol. 4. New York, NY, USA:: AMLBook, 2012..
+Quoted text refers to the original problem statement, verbatim.
+For more solutions, see dsevero.com/blog.
+Consider leaving a Star if this helps you.
+ A sample of heads and tails is created by tossing a coin a number of times independently. Assume we have a number of coins that generate different samples independently."><meta property="og:image" content="/img/icon-192.png">
   <meta property="twitter:image" content="/img/icon-192.png"><meta property="og:locale" content="en-us">
   
     
+      <meta property="article:published_time" content="2019-12-12T19:37:27-03:00">
     
+    <meta property="article:modified_time" content="2019-12-12T19:37:27-03:00">
   
 
   
@@ -150,7 +160,7 @@
 <meta name="theme-color" content="#ffffff">
 
 
-  <title>Dask-ML | </title>
+  <title>Learning From Data, Problem 1.7 | </title>
 
 </head>
 
@@ -319,7 +329,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>Dask-ML</h1>
+  <h1>Learning From Data, Problem 1.7</h1>
 
   
 
@@ -339,7 +349,7 @@
     
       
     
-    Jan 1, 0001
+    Dec 12, 2019
   </span>
   
 
@@ -375,41 +385,6 @@
 
 
 
-<div class="btn-links mb-3">
-  
-  <a class="btn btn-outline-primary my-1" href="https://github.com/dask/dask-ml/pulls?q=author:dsevero" target="_blank" rel="noopener">Go to Project Site</a>
-  
-  
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
 
   
 </div>
@@ -419,7 +394,168 @@
   <div class="article-container">
 
     <div class="article-style">
-      
+      <p>This post is a solution to the problem taken from <a href="http://www.amlbook.com" target="_blank">Abu-Mostafa, Yaser S., Malik Magdon-Ismail, and Hsuan-Tien Lin. <strong>Learning from data.</strong> Vol. 4. New York, NY, USA:: AMLBook, 2012.</a>.</p>
+
+<p>Quoted text refers to the original problem statement, verbatim.</p>
+
+<p>For more solutions, see <a href="/blog">dsevero.com/blog</a>.</p>
+
+<p>Consider leaving a <span style="text-shadow: none;"><a class="github-button" href="https://github.com/dsevero/dsevero.com" data-icon="octicon-star" data-size="small" data-show-count="true" aria-label="Star this on GitHub">Star</a><script async defer src="https://buttons.github.io/buttons.js"></script></span> if this helps you.</p>
+
+<hr />
+
+<blockquote>
+<p>A sample of heads and tails is created by tossing a coin a number of times independently. Assume we have a number of coins that generate different samples independently. For a given coin, let the probability of heads (probability of error) be $\mu$. The probability of obtaining $k$ heads in $N$ tosses of this coin is given by the binomial distribution:
+$$ P\left[ k \mid N, \mu \right] = {N\choose k} \mu^k \left(1 - \mu\right)^{N-k}$$
+Remember that the training error $\nu$ is $\frac{k}{N}$</p>
+</blockquote>
+
+<p>The objective of this problem is to show that, given a large enough set of hypotheses $\mathcal{H}$, the probability of obtaining low training error on at least one $h \in \mathcal{H}$ is high if the data is i.i.d. Therefore, we should be careful when evaluating models even if we have followed the standard train, test and validation split procedure.</p>
+
+<p>A coin flip represents a data point $\mathbf{x} \in \mathcal{X}$, therefore $N$ is the size of the dataset. Each coin is a hypothesis $h \in \mathcal{H}$, hence $M$ is the cardinality of $\mathcal{H}$. Following the bin analogy from the book, heads (numerically, $1$) represents a <em>miss</em> $h(\mathbf{x}) \neq f(\mathbf{x})$ where $f: \mathcal{X} \rightarrow \left\{\text{heads}, \text{tails}\right\}$ is the target function.</p>
+
+<p>How does this translate to practice? Say you have a training dataset $\mathcal{D}$ and $M$ models $h_m \in \mathcal{H}$ that you wish to evaluate. You sample (with replacement) $N$ points $\mathbf{x}_{m,n} \in \mathcal{D}$ (e.g. mini-batch training) for each $h_m$ (i.e. a total of $NM$ points). What is the probability that at least one hypothesis will have zero in-sample error?</p>
+
+<blockquote>
+<p>(a) Assume the sample size $(N)$ is $10$. If all the coins have $\mu = 0.05$ compute the probability that at least one coin will have $v = 0$ for the case of $1$ coin, $1,000$ coins, $1,000,000$ coins. Repeat for μ = 0.8.</p>
+</blockquote>
+
+<p>Let $k_m$ be the number of heads for each coin. Since $\nu=0$ implies that $k=0$, we need to calculate</p>
+
+<p>$$ P\left[ k_1=0 \vee k_2=0 \vee &hellip; k_m=0 \right] = P\left[ \bigvee\limits_{m} k_m = 0 \right]$$</p>
+
+<p>Here, we employ the common trick of computing the probability of the complement</p>
+
+<p>$$
+\begin{aligned}
+  P\left[ \bigvee\limits_{m} k_m = 0 \right] &amp;= 1 - P\left[ \bigwedge\limits_{m} k_m &gt; 0 \right] \\<br />
+                                                   &amp;= 1 - \prod\limits_{m}P\left[ k_m &gt; 0 \right]
+\end{aligned}
+$$</p>
+
+<p>Note that this step follows from the fact that $\mathbf{x}_{m,n}$ are independent. If we had used the same set of $N$ points for all $h_m$ (i.e. $\mathbf{x}_{m,n} \rightarrow \mathbf{x}_{n})$, the set of $k_m$ would not be independent, since looking at a specific $k_m$ would give you information regarding some other $k_{m^\prime}$.</p>
+
+<p>Summing over the values of $k$ and using the fact that $\sum\limits_{k=0}^N P\left[k\right] = 1$ we can compute</p>
+
+<p>$$
+\begin{aligned}
+  P\left[ k_m &gt; 0 \right] &amp;= \sum\limits_{i=1}^N P\left[k\right] \\<br />
+                             &amp;= \sum\limits_{i=0}^N P\left[k\right] - P\left[0\right] \\<br />
+                             &amp;= 1 - \left(1 - \mu\right)^N
+\end{aligned}
+$$</p>
+
+<p>Thus, resulting in</p>
+
+<p>$$P\left[ \bigvee\limits_{m} k_m = 0 \right] = 1 - \left(  1 - \left(1 - \mu\right)^N \right)^M$$</p>
+
+<p>The result is intuitive. For a single coin, if $\left(1 - \mu\right)^N$ is the probability that <strong>all</strong> $N$ flips result in tails, the complement $1 - \left(1 - \mu\right)^N$ is the probability that <strong>at least one</strong> flip will result in heads. For this to happen to <strong>all</strong> $M$ coins, we get $\left(  1 - \left(1 - \mu\right)^N \right)^M$. Similarly, the probability of the complement is $1 - \left(  1 - \left(1 - \mu\right)^N \right)^M$ and can be interpretated as the probability that <strong>at least one</strong> coin out of $M$ will have <strong>all</strong> flips out of $N$ resulting in tails.</p>
+
+<p>Let&rsquo;s take a look at this in python.</p>
+
+<pre><code class="language-python">import matplotlib.pyplot as plt
+import pandas as pd
+
+def prob_zero_error(μ: 'true probability of error',
+                    M: 'number of hypotheses',
+                    N: 'number of data points'):
+    return 1 - (1 - (1 - μ)**N)**M
+
+d = [{'μ': μ, 
+      'M': M, 
+      'p': prob_zero_error(μ, M, N=10)} 
+     for μ in [0.05, 0.8] 
+     for M in [1, 1_000, 1_000_000]]
+
+pd.DataFrame(d).pivot('M', 'μ', 'p').to_html()
+</code></pre>
+
+<table>
+  <thead>
+    <tr style="text-align: right;">
+      <th>μ</th>
+      <th>0.05</th>
+      <th>0.8</th>
+    </tr>
+    <tr>
+      <th>M</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.598737</td>
+      <td>1.024000e-07</td>
+    </tr>
+    <tr>
+      <th>1000</th>
+      <td>1.000000</td>
+      <td>1.023948e-04</td>
+    </tr>
+    <tr>
+      <th>1000000</th>
+      <td>1.000000</td>
+      <td>9.733159e-02</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+<p>(b) For the case $N = 6$ and $2$ coins with $\mu = 0.5$ for both coins, plot the probability $$P[ \max\limits_i \mid \nu_i - \mu_i \mid &gt; \epsilon ]$$ for $\epsilon$ in the range $[0, 1]$ (the max is over coins). On the same plot show the bound that would be obtained using the Hoeffding Inequality. Remember that for a single coin, the Hoeffding bound is $$P[\mid \nu- \mu \mid &gt; \epsilon ] \leq 2e^{-2N\epsilon^2}$$</p>
+</blockquote>
+
+<pre><code class="language-python">import matplotlib.pyplot as plt
+import numpy as np
+plt.style.use('ggplot')
+
+N = 6
+M = 2
+μ = 0.5
+
+def hoeffding_bound(ϵ, N, M=1):
+    return 2*M*np.exp(-2*N*ϵ**2)
+
+def P(N, M, ϵ_space, μ):
+    Ps = np.abs(np.random.binomial(n=N, p=μ, size=(1_000, M))/N - μ).max(axis=1)
+    return [(Ps &gt; ϵ).mean() for ϵ in ϵ_space]
+
+ϵ_space = np.linspace(0, 1, 100)
+plt.figure(figsize=(12,5))
+plt.plot(ϵ_space, hoeffding_bound(ϵ_space, N), '--',
+         ϵ_space, hoeffding_bound(ϵ_space, N, M=3), '--', 
+         ϵ_space, P(6, 2, ϵ_space, μ),
+         ϵ_space, P(6, 10, ϵ_space, μ));
+plt.title('Average over $1000$ iterations of\n'
+          '$\max \{ \mid k_1/6 - 0.5 \mid, \mid k_2/6 - 0.5 \mid\} &gt; \epsilon $\n', 
+          fontsize=20)
+plt.legend(['Hoeffding Bound ($M=1 \\rightarrow 2e^{-12\epsilon^2}$)',
+            'Hoeffding Bound ($M=3 \\rightarrow 6e^{-12\epsilon^2}$)',
+            '$M=2$',
+            '$M=3$'], fontsize=18)
+plt.yticks(fontsize=18)
+plt.xticks(fontsize=18)
+plt.ylim(0, 2)
+plt.xlabel('$\epsilon$', fontsize=20);
+</code></pre>
+
+<p><img src="b.png" alt="b.png" /></p>
+
+<p>Notice how the Hoeffding Bound is violated for $M=3$ if multiple hypotheses are not properly accounted for.</p>
+
+<!---
+> [Hint: Use $P\[A\\space\\text{or}\\space B\] = P\[A\] + P\[B\] \\space \\space \\space \\space P\[A\\space\\text{and}\\space B\] = P\[A\] + P\[B\] - P\[A\] P\[B\]$, where the last equality follows by independence, to evaluate $P\[\\max \\dots \]]$.
+-->
+
+<hr />
+
+<p>Questions, suggestions or corrections? Message me on <a href="https://twitter.com/_dsevero" target="_blank">twitter</a> or create a pull request at <a href="https://github.com/dsevero/dsevero.com" target="_blank">dsevero/dsevero.com</a></p>
+
+<p>Consider leaving a <span style="text-shadow: none;"><a class="github-button" href="https://github.com/dsevero/dsevero.com" data-icon="octicon-star" data-size="small" data-show-count="true" aria-label="Star this on GitHub">Star</a><script async defer src="https://buttons.github.io/buttons.js"></script></span> if this helps you.</p>
+
+<hr />
+
     </div>
 
     
