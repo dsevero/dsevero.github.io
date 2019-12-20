@@ -33,9 +33,9 @@ $$ P\left[ k \mid N, \mu \right] = {N\choose k} \mu^k \left(1 - \mu\right)^{N-k}
 Remember that the training error $\nu$ is $\frac{k}{N}$&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;The objective of this problem is to show that, given a large enough set of hypotheses $\mathcal{H}$, the probability of obtaining low training error on at least one $h \in \mathcal{H}$ is high if the data is i.i.d. Therefore, we should be careful when evaluating models even if we have followed the standard train, test and validation split procedure.&lt;/p&gt;
+&lt;p&gt;The learning model used in this chapter is the following: assume you have a $N$ datapoints sampled independently from some unkown distribution $\mathbf{x}_n \sim P$, targets $y_n = f(\mathbf{x_n})$ and a set of hypotheses (e.g. machine learning models) $h \in \mathcal{H}$ of size $\mid \mathcal{H} \mid = M$. A coin flipping experiment is used to draw conclusions on the accuracy of binary classifiers. The $n$-th flip of a coin is the evaluation of some hypothesis $h$ on point $(\mathbf{x}_n, y_n)$. Heads (numerically, 1) represents an error $h(\mathbf{x}_n) \neq y_n$, while tails is a successful prediction. In the case of $M$ coins, we have $M$ hypotheses and $NM$ data points $(x_{m,n}, y_{m,n})$&lt;/p&gt;
 
-&lt;p&gt;A coin flip represents a data point $\mathbf{x} \in \mathcal{X}$, therefore $N$ is the size of the dataset. Each coin is a hypothesis $h \in \mathcal{H}$, hence $M$ is the cardinality of $\mathcal{H}$. Following the bin analogy from the book, heads (numerically, $1$) represents a &lt;em&gt;miss&lt;/em&gt; $h(\mathbf{x}) \neq f(\mathbf{x})$ where $f: \mathcal{X} \rightarrow \left\{\text{heads}, \text{tails}\right\}$ is the target function.&lt;/p&gt;
+&lt;p&gt;The objective of this problem is to show that, given a large enough set of hypotheses $\mathcal{H}$, the probability of obtaining low training error on at least one $h \in \mathcal{H}$ is high if the data is i.i.d. Therefore, we should be careful when evaluating models even if we have followed the standard train, test and validation split procedure.&lt;/p&gt;
 
 &lt;p&gt;How does this translate to practice? Say you have a training dataset $\mathcal{D}$ and $M$ models $h_m \in \mathcal{H}$ that you wish to evaluate. You sample (with replacement) $N$ points $\mathbf{x}_{m,n} \in \mathcal{D}$ (e.g. mini-batch training) for each $h_m$ (i.e. a total of $NM$ points). What is the probability that at least one hypothesis will have zero in-sample error?&lt;/p&gt;
 
@@ -49,14 +49,14 @@ Remember that the training error $\nu$ is $\frac{k}{N}$&lt;/p&gt;
 
 &lt;p&gt;Here, we employ the common trick of computing the probability of the complement&lt;/p&gt;
 
+&lt;p&gt;Note that the following step stems from the fact that $\mathbf{x}_{m,n}$ are independent. If we had used the same set of $N$ points for all $h_m$ (i.e. $\mathbf{x}_{m,n} \rightarrow \mathbf{x}_{n})$, the set of $k_m$ would not be independent, since looking at a specific $k_m$ would give you information regarding some other $k_{m^\prime}$.&lt;/p&gt;
+
 &lt;p&gt;$$
 \begin{aligned}
   P\left[ \bigvee\limits_{m} k_m = 0 \right] &amp;amp;= 1 - P\left[ \bigwedge\limits_{m} k_m &amp;gt; 0 \right] \\&lt;br /&gt;
                                                    &amp;amp;= 1 - \prod\limits_{m}P\left[ k_m &amp;gt; 0 \right]
 \end{aligned}
 $$&lt;/p&gt;
-
-&lt;p&gt;Note that this step follows from the fact that $\mathbf{x}_{m,n}$ are independent. If we had used the same set of $N$ points for all $h_m$ (i.e. $\mathbf{x}_{m,n} \rightarrow \mathbf{x}_{n})$, the set of $k_m$ would not be independent, since looking at a specific $k_m$ would give you information regarding some other $k_{m^\prime}$.&lt;/p&gt;
 
 &lt;p&gt;Summing over the values of $k$ and using the fact that $\sum\limits_{k=0}^N P\left[k\right] = 1$ we can compute&lt;/p&gt;
 
@@ -98,10 +98,12 @@ pd.DataFrame(d).pivot(&#39;M&#39;, &#39;μ&#39;, &#39;p&#39;).to_html()
     &lt;tr style=&#34;text-align: right;&#34;&gt;
       &lt;th&gt;μ&lt;/th&gt;
       &lt;th&gt;0.05&lt;/th&gt;
+      &lt;th&gt;0.5&lt;/th&gt;
       &lt;th&gt;0.8&lt;/th&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;th&gt;M&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
       &lt;th&gt;&lt;/th&gt;
       &lt;th&gt;&lt;/th&gt;
     &lt;/tr&gt;
@@ -110,20 +112,39 @@ pd.DataFrame(d).pivot(&#39;M&#39;, &#39;μ&#39;, &#39;p&#39;).to_html()
     &lt;tr&gt;
       &lt;th&gt;1&lt;/th&gt;
       &lt;td&gt;0.598737&lt;/td&gt;
+      &lt;td&gt;0.000977&lt;/td&gt;
       &lt;td&gt;1.024000e-07&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;th&gt;1000&lt;/th&gt;
       &lt;td&gt;1.000000&lt;/td&gt;
+      &lt;td&gt;0.623576&lt;/td&gt;
       &lt;td&gt;1.023948e-04&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;th&gt;1000000&lt;/th&gt;
       &lt;td&gt;1.000000&lt;/td&gt;
+      &lt;td&gt;1.000000&lt;/td&gt;
       &lt;td&gt;9.733159e-02&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
+
+&lt;p&gt;We&amp;rsquo;ve included the results for $\mu = 0.5$, which represents a reasonable error rate for an untrained binary classification model. The middle cell tells us that a sample of size $NM = 10^4$ evaluated on $M=10^3$ hypotheses (with $10$ samples each) has a $62.36\%$ chance of at least one hypothesis having error zero.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s take a look at the asymptotic properties of $P(N,M) = 1 - \left(  1 - \left(1 - \mu\right)^N \right)^M$ for $\mu \in (0, 1)$.&lt;/p&gt;
+
+&lt;p&gt;$$\lim\limits_{M \rightarrow \infty} P(N,M) = 1$$
+$$\lim\limits_{N \rightarrow \infty} P(N,M) = 0$$&lt;/p&gt;
+
+&lt;p&gt;Intuitvely, evaluating on more datapoints $N$ should make it harder for all points (coins) to have zero error (tails) for any number of hypotheses. Using a larger hypothesis set $\mid\mathcal{H}\mid = M$ is analogous to brute forcing the appearance of $k=0$ through repetitive attempts.&lt;/p&gt;
+
+&lt;p&gt;If we want to bound this probability (for the sake of sanity) to some value $\lambda$, how should we chose $M$ and $N$? Solving independently for $N$ and $M$ in $P(N,M) \leq \lambda$&lt;/p&gt;
+
+&lt;p&gt;$$M \leq \frac{log\left(1 - \lambda\right)}{log\left(1 - \left(1 - \mu\right)^N\right)}$$
+$$N \geq \frac{log\left(1 - \sqrt[M]{1 - \lambda} \right)}{log\left(1 - \mu\right)}$$&lt;/p&gt;
+
+&lt;p&gt;We can use these result to calculate how fast the number of hypotheses $M$ can grow with respect to the number of datapoints $N$ for a fixed probability of zero error $\lambda$$, and vice-versa.&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;(b) For the case $N = 6$ and $2$ coins with $\mu = 0.5$ for both coins, plot the probability $$P[ \max\limits_i \mid \nu_i - \mu_i \mid &amp;gt; \epsilon ]$$ for $\epsilon$ in the range $[0, 1]$ (the max is over coins). On the same plot show the bound that would be obtained using the Hoeffding Inequality. Remember that for a single coin, the Hoeffding bound is $$P[\mid \nu- \mu \mid &amp;gt; \epsilon ] \leq 2e^{-2N\epsilon^2}$$&lt;/p&gt;
