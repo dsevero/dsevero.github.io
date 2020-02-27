@@ -5,12 +5,20 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>Daniel Severo</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 12 Dec 2019 19:37:27 -0300</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 23 Feb 2020 01:50:44 -0300</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Daniel Severo</title>
       <link>/</link>
     </image>
+    
+    <item>
+      <title>Proof of Novelty</title>
+      <link>/pon/</link>
+      <pubDate>Sun, 23 Feb 2020 01:50:44 -0300</pubDate>
+      <guid>/pon/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Work</title>

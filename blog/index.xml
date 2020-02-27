@@ -708,7 +708,8 @@ x = (s.index - pd.Timestamp(0)).days.values
       <link>/blog/ziggurat/</link>
       <pubDate>Mon, 23 Sep 2019 01:50:44 -0300</pubDate>
       <guid>/blog/ziggurat/</guid>
-      <description></description>
+      <description>&lt;p&gt;&lt;meta http-equiv=&#34;refresh&#34; content=&#34;0; url=http://example.com/&#34;/&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
