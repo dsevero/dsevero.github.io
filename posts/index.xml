@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>About me on Daniel Severo</title>
-    <link>https://dsevero.com/</link>
-    <description>Recent content in About me on Daniel Severo</description>
+    <title>Posts on Daniel Severo</title>
+    <link>https://dsevero.com/posts/</link>
+    <description>Recent content in Posts on Daniel Severo</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 25 Oct 2019 14:33:30 -0300</lastBuildDate>
     
-	<atom:link href="https://dsevero.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://dsevero.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -28,17 +28,6 @@ The following ipython magic (this is literally the name) will enable plots made 
       
       <guid>https://dsevero.com/posts/dask/</guid>
       <description>How can we keep the simplicity and power of pandas, while extending it to be out-of-core and parallel?</description>
-    </item>
-    
-    <item>
-      <title>Reading List</title>
-      <link>https://dsevero.com/reading/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://dsevero.com/reading/</guid>
-      <description>Things I think are worth reading. Consider leaving a Star if this helps you.
- Statistical Learning Theory
- Shalev-Shwartz, Shai, and Shai Ben-David. Understanding machine learning: From theory to algorithms. Cambridge university press, 2014. [book] [lectures] Abu-Mostafa, Yaser S., Malik Magdon-Ismail, and Hsuan-Tien Lin. Learning from data. Vol. 4. New York, NY, USA:: AMLBook, 2012. [book] ISIT 2018 - S. Kannan, H. Kim &amp;amp; S. Oh - Deep learning and information theory An Emerging Interface [video] [slides] Ashish Khisti.</description>
     </item>
     
   </channel>
