@@ -30,5 +30,18 @@ The following ipython magic (this is literally the name) will enable plots made 
       <description>How can we keep the simplicity and power of pandas, while extending it to be out-of-core and parallel?</description>
     </item>
     
+    <item>
+      <title>Learning From Data, Problem 1.7</title>
+      <link>https://dsevero.com/posts/lfd-p17/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://dsevero.com/posts/lfd-p17/</guid>
+      <description>This post is a solution to the problem taken from Abu-Mostafa, Yaser S., Malik Magdon-Ismail, and Hsuan-Tien Lin. Learning from data. Vol. 4. New York, NY, USA:: AMLBook, 2012..
+Quoted text refers to the original problem statement, verbatim.
+For more solutions, see dsevero.com/blog.
+Consider leaving a Star if this helps you.
+  A sample of heads and tails is created by tossing a coin a number of times independently.</description>
+    </item>
+    
   </channel>
 </rss>
