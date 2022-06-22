@@ -5,11 +5,7 @@
     <link>https://dsevero.com/posts/</link>
     <description>Recent content in Posts on Daniel Severo</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 25 Oct 2019 14:33:30 -0300</lastBuildDate>
-    
-	<atom:link href="https://dsevero.com/posts/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 25 Oct 2019 14:33:30 -0300</lastBuildDate><atom:link href="https://dsevero.com/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Handling Time-series in Pandas and Numpy.</title>
       <link>https://dsevero.com/posts/pandas/</link>
@@ -17,7 +13,7 @@
       
       <guid>https://dsevero.com/posts/pandas/</guid>
       <description>Here we will show you how to properly use the Python Data Analysis Library (pandas) and numpy. The agenda is:
- How to load data from csv files The basic pandas objects: DataFrames and Series Handling Time-Series data Resampling (optional) From pandas to numpy Simple Linear Regression  Consider leaving a Star if this helps you.
+How to load data from csv files The basic pandas objects: DataFrames and Series Handling Time-Series data Resampling (optional) From pandas to numpy Simple Linear Regression Consider leaving a Star if this helps you.
 The following ipython magic (this is literally the name) will enable plots made by matplotlib to be rendered inside this notebook.</description>
     </item>
     
@@ -40,7 +36,7 @@ The following ipython magic (this is literally the name) will enable plots made 
 Quoted text refers to the original problem statement, verbatim.
 For more solutions, see dsevero.com/blog.
 Consider leaving a Star if this helps you.
-  A sample of heads and tails is created by tossing a coin a number of times independently.</description>
+A sample of heads and tails is created by tossing a coin a number of times independently. Assume we have a number of coins that generate different samples independently.</description>
     </item>
     
   </channel>

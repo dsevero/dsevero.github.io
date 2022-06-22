@@ -5,11 +5,7 @@
     <link>https://dsevero.com/</link>
     <description>Recent content in About me on Daniel Severo</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 25 Oct 2019 14:33:30 -0300</lastBuildDate>
-    
-	<atom:link href="https://dsevero.com/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 25 Oct 2019 14:33:30 -0300</lastBuildDate><atom:link href="https://dsevero.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Handling Time-series in Pandas and Numpy.</title>
       <link>https://dsevero.com/posts/pandas/</link>
@@ -17,7 +13,7 @@
       
       <guid>https://dsevero.com/posts/pandas/</guid>
       <description>Here we will show you how to properly use the Python Data Analysis Library (pandas) and numpy. The agenda is:
- How to load data from csv files The basic pandas objects: DataFrames and Series Handling Time-Series data Resampling (optional) From pandas to numpy Simple Linear Regression  Consider leaving a Star if this helps you.
+How to load data from csv files The basic pandas objects: DataFrames and Series Handling Time-Series data Resampling (optional) From pandas to numpy Simple Linear Regression Consider leaving a Star if this helps you.
 The following ipython magic (this is literally the name) will enable plots made by matplotlib to be rendered inside this notebook.</description>
     </item>
     
@@ -40,7 +36,7 @@ The following ipython magic (this is literally the name) will enable plots made 
 Quoted text refers to the original problem statement, verbatim.
 For more solutions, see dsevero.com/blog.
 Consider leaving a Star if this helps you.
-  A sample of heads and tails is created by tossing a coin a number of times independently.</description>
+A sample of heads and tails is created by tossing a coin a number of times independently. Assume we have a number of coins that generate different samples independently.</description>
     </item>
     
     <item>
@@ -50,7 +46,7 @@ Consider leaving a Star if this helps you.
       
       <guid>https://dsevero.com/reading/</guid>
       <description>Things I think are worth reading. Consider leaving a Star if this helps you.
- Statistical Learning Theory  Shalev-Shwartz, Shai, and Shai Ben-David. Understanding machine learning: From theory to algorithms. Cambridge university press, 2014. [book] [lectures] Abu-Mostafa, Yaser S., Malik Magdon-Ismail, and Hsuan-Tien Lin. Learning from data. Vol. 4. New York, NY, USA:: AMLBook, 2012. [book] ISIT 2018 - S. Kannan, H. Kim &amp;amp; S. Oh - Deep learning and information theory An Emerging Interface [video] [slides] Ashish Khisti.</description>
+Statistical Learning Theory # Shalev-Shwartz, Shai, and Shai Ben-David. Understanding machine learning: From theory to algorithms. Cambridge university press, 2014. [book] [lectures] Abu-Mostafa, Yaser S., Malik Magdon-Ismail, and Hsuan-Tien Lin. Learning from data. Vol. 4. New York, NY, USA:: AMLBook, 2012. [book] ISIT 2018 - S. Kannan, H. Kim &amp;amp; S. Oh - Deep learning and information theory An Emerging Interface [video] [slides] Ashish Khisti.</description>
     </item>
     
   </channel>

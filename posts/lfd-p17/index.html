@@ -8,20 +8,22 @@
 Quoted text refers to the original problem statement, verbatim.
 For more solutions, see dsevero.com/blog.
 Consider leaving a Star if this helps you.
-  A sample of heads and tails is created by tossing a coin a number of times independently.">
+A sample of heads and tails is created by tossing a coin a number of times independently. Assume we have a number of coins that generate different samples independently.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Learning From Data, Problem 1.7" />
 <meta property="og:description" content="This post is a solution to the problem taken from Abu-Mostafa, Yaser S., Malik Magdon-Ismail, and Hsuan-Tien Lin. Learning from data. Vol. 4. New York, NY, USA:: AMLBook, 2012..
 Quoted text refers to the original problem statement, verbatim.
 For more solutions, see dsevero.com/blog.
 Consider leaving a Star if this helps you.
-  A sample of heads and tails is created by tossing a coin a number of times independently." />
+A sample of heads and tails is created by tossing a coin a number of times independently. Assume we have a number of coins that generate different samples independently." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dsevero.com/posts/lfd-p17/" />
+<meta property="og:url" content="https://dsevero.com/posts/lfd-p17/" /><meta property="article:section" content="posts" />
+
+
 
 <title>Learning From Data, Problem 1.7 | Daniel Severo</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
+<link rel="stylesheet" href="/book.min.a8f172e9514e766ee7562278ee2929cc668544eb977d0ee52069556d89261049.css" integrity="sha256-qPFy6VFOdm7nViJ47ikpzGaFROuXfQ7lIGlVbYkmEEk=">
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
@@ -124,7 +126,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -209,22 +211,22 @@ Remember that the training error \(\nu\) is \(\frac{k}{N}\)</p>
 <p>$$P\left[ \bigvee\limits_{m} k_m = 0 \right] = 1 - \left(  1 - \left(1 - \mu\right)^N \right)^M$$</p>
 <p>The result is intuitive. For a single coin, if \(\left(1 - \mu\right)^N\) is the probability that <strong>all</strong> \(N\) flips result in tails, the complement \(1 - \left(1 - \mu\right)^N\) is the probability that <strong>at least one</strong> flip will result in heads. For this to happen to <strong>all</strong> \(M\) coins, we get \(\left(  1 - \left(1 - \mu\right)^N \right)^M\). Similarly, the probability of the complement is \(1 - \left(  1 - \left(1 - \mu\right)^N \right)^M\) and can be interpretated as the probability that <strong>at least one</strong> coin out of \(M\) will have <strong>all</strong> flips out of \(N\) resulting in tails.</p>
 <p>Let&rsquo;s take a look at this in python.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
-<span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">prob_zero_error</span>(<span style="color:#960050;background-color:#1e0010">μ</span>: <span style="color:#e6db74">&#39;true probability of error&#39;</span>,
-                    M: <span style="color:#e6db74">&#39;number of hypotheses&#39;</span>,
-                    N: <span style="color:#e6db74">&#39;number of data points&#39;</span>):
-    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">μ</span>)<span style="color:#f92672">**</span>N)<span style="color:#f92672">**</span>M
-
-d <span style="color:#f92672">=</span> [{<span style="color:#e6db74">&#39;μ&#39;</span>: <span style="color:#960050;background-color:#1e0010">μ</span>, 
-      <span style="color:#e6db74">&#39;M&#39;</span>: M, 
-      <span style="color:#e6db74">&#39;p&#39;</span>: prob_zero_error(<span style="color:#960050;background-color:#1e0010">μ</span>, M, N<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>)} 
-     <span style="color:#66d9ef">for</span> <span style="color:#960050;background-color:#1e0010">μ</span> <span style="color:#f92672">in</span> [<span style="color:#ae81ff">0.05</span>, <span style="color:#ae81ff">0.8</span>] 
-     <span style="color:#66d9ef">for</span> M <span style="color:#f92672">in</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>_000, <span style="color:#ae81ff">1</span>_000_000]]
-
-pd<span style="color:#f92672">.</span>DataFrame(d)<span style="color:#f92672">.</span>pivot(<span style="color:#e6db74">&#39;M&#39;</span>, <span style="color:#e6db74">&#39;μ&#39;</span>, <span style="color:#e6db74">&#39;p&#39;</span>)<span style="color:#f92672">.</span>to_html()
-</code></pre></div><table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">prob_zero_error</span>(μ: <span style="color:#e6db74">&#39;true probability of error&#39;</span>,
+</span></span><span style="display:flex;"><span>                    M: <span style="color:#e6db74">&#39;number of hypotheses&#39;</span>,
+</span></span><span style="display:flex;"><span>                    N: <span style="color:#e6db74">&#39;number of data points&#39;</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> μ)<span style="color:#f92672">**</span>N)<span style="color:#f92672">**</span>M
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>d <span style="color:#f92672">=</span> [{<span style="color:#e6db74">&#39;μ&#39;</span>: μ, 
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;M&#39;</span>: M, 
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;p&#39;</span>: prob_zero_error(μ, M, N<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>)} 
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">for</span> μ <span style="color:#f92672">in</span> [<span style="color:#ae81ff">0.05</span>, <span style="color:#ae81ff">0.8</span>] 
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">for</span> M <span style="color:#f92672">in</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1_000</span>, <span style="color:#ae81ff">1_000_000</span>]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pd<span style="color:#f92672">.</span>DataFrame(d)<span style="color:#f92672">.</span>pivot(<span style="color:#e6db74">&#39;M&#39;</span>, <span style="color:#e6db74">&#39;μ&#39;</span>, <span style="color:#e6db74">&#39;p&#39;</span>)<span style="color:#f92672">.</span>to_html()
+</span></span></code></pre></div><table>
   <thead>
     <tr style="text-align: right;">
       <th>μ</th>
@@ -272,45 +274,45 @@ $$N \geq \frac{log\left(1 - \sqrt[M]{1 - \lambda} \right)}{log\left(1 - \mu\righ
 <blockquote>
 <p>(b) For the case \(N = 6\) and \(2\) coins with \(\mu = 0.5\) for both coins, plot the probability \(P[ \max\limits_i \mid \nu_i - \mu_i \mid &gt; \epsilon ]\) for \(\epsilon\) in the range \([0, 1]\) (the max is over coins). On the same plot show the bound that would be obtained using the Hoeffding Inequality. Remember that for a single coin, the Hoeffding bound is $$P[\mid \nu- \mu \mid &gt; \epsilon ] \leq 2e^{-2N\epsilon^2}$$</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
-<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
-plt<span style="color:#f92672">.</span>style<span style="color:#f92672">.</span>use(<span style="color:#e6db74">&#39;ggplot&#39;</span>)
-
-N <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
-M <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
-<span style="color:#960050;background-color:#1e0010">μ</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hoeffding_bound</span>(<span style="color:#960050;background-color:#1e0010">ε</span>, N, M<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>):
-    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>M<span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>N<span style="color:#f92672">*</span><span style="color:#960050;background-color:#1e0010">ε</span><span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>)
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">P</span>(N, M, <span style="color:#960050;background-color:#1e0010">ε</span>_space, <span style="color:#960050;background-color:#1e0010">μ</span>):
-    k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>binomial(n<span style="color:#f92672">=</span>N,
-                           p<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">μ</span>,
-                           size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>_000, M))
-    P <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>abs(k<span style="color:#f92672">/</span>N <span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">μ</span>)<span style="color:#f92672">.</span>max(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-    <span style="color:#66d9ef">return</span> [(P <span style="color:#f92672">&gt;</span> <span style="color:#960050;background-color:#1e0010">ε</span>)<span style="color:#f92672">.</span>mean() <span style="color:#66d9ef">for</span> <span style="color:#960050;background-color:#1e0010">ε</span> <span style="color:#f92672">in</span> <span style="color:#960050;background-color:#1e0010">ε</span>_space]
-
-<span style="color:#960050;background-color:#1e0010">ε</span>_space <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">100</span>)
-plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">5</span>))
-plt<span style="color:#f92672">.</span>plot(<span style="color:#960050;background-color:#1e0010">ε</span>_space, hoeffding_bound(<span style="color:#960050;background-color:#1e0010">ε</span>_space, N), <span style="color:#e6db74">&#39;--&#39;</span>,
-         <span style="color:#960050;background-color:#1e0010">ε</span>_space, hoeffding_bound(<span style="color:#960050;background-color:#1e0010">ε</span>_space, N, M<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>), <span style="color:#e6db74">&#39;--&#39;</span>, 
-         <span style="color:#960050;background-color:#1e0010">ε</span>_space, P(<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">2</span>, <span style="color:#960050;background-color:#1e0010">ε</span>_space, <span style="color:#960050;background-color:#1e0010">μ</span>),
-         <span style="color:#960050;background-color:#1e0010">ε</span>_space, P(<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">10</span>, <span style="color:#960050;background-color:#1e0010">ε</span>_space, <span style="color:#960050;background-color:#1e0010">μ</span>));
-plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Average over $1000$ iterations of</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
-          <span style="color:#e6db74">&#39;$\max \{ \mid k_1/6 - 0.5 \mid,&#39;</span>
-          <span style="color:#e6db74">&#39;\mid k_2/6 - 0.5 \mid\} &gt; \epsilon $</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>,
-          fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>)
-plt<span style="color:#f92672">.</span>legend([<span style="color:#e6db74">&#39;Hoeffding Bound &#39;</span>
-            <span style="color:#e6db74">&#39;($M=1 </span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">rightarrow 2e^{-12\epsilon^2}$)&#39;</span>,
-            <span style="color:#e6db74">&#39;Hoeffding Bound &#39;</span>
-            <span style="color:#e6db74">&#39;($M=3 </span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">rightarrow 6e^{-12\epsilon^2}$)&#39;</span>,
-            <span style="color:#e6db74">&#39;$M=2$&#39;</span>,
-            <span style="color:#e6db74">&#39;$M=3$&#39;</span>], fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">18</span>)
-plt<span style="color:#f92672">.</span>yticks(fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">18</span>)
-plt<span style="color:#f92672">.</span>xticks(fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">18</span>)
-plt<span style="color:#f92672">.</span>ylim(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>)
-plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;$\epsilon$&#39;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>);
-</code></pre></div><p><img src="b.png" alt="b.png" /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>style<span style="color:#f92672">.</span>use(<span style="color:#e6db74">&#39;ggplot&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>N <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span>M <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>μ <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hoeffding_bound</span>(ε, N, M<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>M<span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>N<span style="color:#f92672">*</span>ε<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">P</span>(N, M, ε_space, μ):
+</span></span><span style="display:flex;"><span>    k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>binomial(n<span style="color:#f92672">=</span>N,
+</span></span><span style="display:flex;"><span>                           p<span style="color:#f92672">=</span>μ,
+</span></span><span style="display:flex;"><span>                           size<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1_000</span>, M))
+</span></span><span style="display:flex;"><span>    P <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>abs(k<span style="color:#f92672">/</span>N <span style="color:#f92672">-</span> μ)<span style="color:#f92672">.</span>max(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [(P <span style="color:#f92672">&gt;</span> ε)<span style="color:#f92672">.</span>mean() <span style="color:#66d9ef">for</span> ε <span style="color:#f92672">in</span> ε_space]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ε_space <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">5</span>))
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(ε_space, hoeffding_bound(ε_space, N), <span style="color:#e6db74">&#39;--&#39;</span>,
+</span></span><span style="display:flex;"><span>         ε_space, hoeffding_bound(ε_space, N, M<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>), <span style="color:#e6db74">&#39;--&#39;</span>, 
+</span></span><span style="display:flex;"><span>         ε_space, P(<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">2</span>, ε_space, μ),
+</span></span><span style="display:flex;"><span>         ε_space, P(<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">10</span>, ε_space, μ));
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Average over $1000$ iterations of</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#39;$\max \{ \mid k_1/6 - 0.5 \mid,&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#39;\mid k_2/6 - 0.5 \mid\} &gt; \epsilon $</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>,
+</span></span><span style="display:flex;"><span>          fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>legend([<span style="color:#e6db74">&#39;Hoeffding Bound &#39;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;($M=1 </span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">rightarrow 2e^{-12\epsilon^2}$)&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;Hoeffding Bound &#39;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;($M=3 </span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">rightarrow 6e^{-12\epsilon^2}$)&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;$M=2$&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;$M=3$&#39;</span>], fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">18</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>yticks(fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">18</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xticks(fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">18</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>ylim(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;$\epsilon$&#39;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>);
+</span></span></code></pre></div><p><img src="b.png" alt="b.png" /></p>
 <p>Notice how the Hoeffding Bound is violated for \(M=3\) if multiple hypotheses are not properly accounted for.</p>
 <!---
 > [Hint: Use $P\[A\\space\\text{or}\\space B\] = P\[A\] + P\[B\] \\space \\space \\space \\space P\[A\\space\\text{and}\\space B\] = P\[A\] + P\[B\] - P\[A\] P\[B\]$, where the last equality follows by independence, to evaluate $P\[\\max \\dots \]]$.
